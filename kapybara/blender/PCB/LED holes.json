@@ -3,7 +3,7 @@
   "location": [0.0, 33.993, 15.244],
   "rotation": [-27.0, 0.0, 0.0],
   "scale": [1.0, 1.0, 1.0],
-  "hide_viewport": false,
+  "hide_viewport": true,
   "modifiers": [
     {
       "type": "SOLIDIFY",

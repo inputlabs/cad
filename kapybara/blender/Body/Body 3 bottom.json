@@ -29,13 +29,13 @@
     {
       "type": "BOOLEAN",
       "name": "cav triggers",
-      "object": "<_bpy_types.Object>trigger cav",
+      "object": "<_bpy_types.Object>trigger _cav",
       "solver": "MANIFOLD"
     },
     {
       "type": "BOOLEAN",
       "name": "cav triggers nuts",
-      "object": "<_bpy_types.Object>nuts triggers cav",
+      "object": "<_bpy_types.Object>trigger nut cav",
       "solver": "MANIFOLD"
     },
     {

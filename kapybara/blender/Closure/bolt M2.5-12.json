@@ -3,7 +3,7 @@
   "location": [-13.0, -64.0, 2.6],
   "rotation": [-180.0, 180.0, -0.0],
   "scale": [1.0, 1.0, 1.0],
-  "hide_viewport": false,
+  "hide_viewport": true,
   "modifiers": [
     {
       "type": "BEVEL",
