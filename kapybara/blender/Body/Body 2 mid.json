@@ -17,7 +17,7 @@
       "type": "BOOLEAN",
       "name": "cut 1",
       "show_render": false,
-      "object": "<_bpy_types.Object>Cut 1",
+      "object": "<_bpy_types.Object>Body Cut 1",
       "operation": "INTERSECT",
       "solver": "MANIFOLD"
     },
@@ -25,7 +25,7 @@
       "type": "BOOLEAN",
       "name": "cut 2",
       "show_render": false,
-      "object": "<_bpy_types.Object>Cut 2",
+      "object": "<_bpy_types.Object>Body Cut 2",
       "operation": "INTERSECT",
       "solver": "MANIFOLD"
     },

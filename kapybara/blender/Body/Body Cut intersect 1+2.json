@@ -8,14 +8,14 @@
     {
       "type": "BOOLEAN",
       "name": "Boolean",
-      "object": "<_bpy_types.Object>Cut 1",
+      "object": "<_bpy_types.Object>Body Cut 1",
       "operation": "UNION",
       "solver": "MANIFOLD"
     },
     {
       "type": "BOOLEAN",
       "name": "Boolean.001",
-      "object": "<_bpy_types.Object>Cut 2",
+      "object": "<_bpy_types.Object>Body Cut 2",
       "operation": "INTERSECT",
       "solver": "MANIFOLD"
     }
