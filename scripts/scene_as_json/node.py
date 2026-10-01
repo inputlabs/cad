@@ -39,7 +39,7 @@ def get_geometry_node_group(name):
     else:
         assets = Path(bpy.utils.system_resource('DATAFILES', path='assets'))
         for blend in assets.rglob("*.blend"):
-            with bpy.data.libraries.load(str(blend), link=False, assets_only=True) as (src, dst):
+            with bpy.data.libraries.load(str(blend), link=True, assets_only=True) as (src, dst):
                 if name in src.node_groups:
                     dst.node_groups = [name]
                     break
