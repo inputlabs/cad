@@ -86,16 +86,25 @@ def clear_scene():
                 data_type.remove(block)
 
 def set_scene():
-    modeling = bpy.data.workspaces.get('Modeling')
-    bpy.context.window.workspace = modeling  # Set active.
+    modeling = bpy.data.workspaces.get("Modeling")
+    window = bpy.context.window
+    window.workspace = modeling  # Set active.
     for screen in modeling.screens:
         for area in screen.areas:
             if area.type == 'VIEW_3D':
+                # Distance and position.
                 rv3d = area.spaces.active.region_3d
                 rv3d.view_location = mathutils.Vector((0.0, 0.0, 0.0))
-                rotation = (math.radians(80), 0, math.radians(-90))
-                rv3d.view_rotation = mathutils.Euler(rotation).to_quaternion()
                 rv3d.view_distance = 250.0
+                # Rotation.
+                region = next(
+                    (r for r in area.regions if r.type == 'WINDOW'),
+                    area.regions[-1],
+                )
+                params = dict(window=window, screen=screen, area=area, region=region)
+                with bpy.context.temp_override(**params):
+                    bpy.ops.view3d.view_axis(type='LEFT')
+                # Shading.
                 space = area.spaces.active
                 space.shading.type = 'SOLID'
                 space.shading.light = 'MATCAP'
