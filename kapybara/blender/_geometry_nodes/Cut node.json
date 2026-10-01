@@ -1,0 +1,205 @@
+{
+  "bl_idname": "GeometryNodeTree",
+  "interface": [
+    {
+      "name": "Geometry",
+      "in_out": "OUTPUT",
+      "socket_type": "NodeSocketGeometry",
+      "subtype": null
+    },
+    {
+      "name": "Geometry",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketGeometry",
+      "subtype": null
+    },
+    {
+      "name": "Cut object",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketObject",
+      "subtype": null
+    },
+    {
+      "name": "Top",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketBool",
+      "subtype": null
+    },
+    {
+      "name": "Buttom",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketBool",
+      "subtype": null
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Group Input",
+      "bl_idname": "NodeGroupInput",
+      "location": [-622.291, 89.66],
+      "mute": false,
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Group Output",
+      "bl_idname": "NodeGroupOutput",
+      "location": [550.73, 44.841],
+      "mute": false,
+      "is_active_output": true,
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Object Info",
+      "bl_idname": "GeometryNodeObjectInfo",
+      "location": [-389.454, -65.621],
+      "mute": false,
+      "transform_space": "RELATIVE",
+      "inputs": {
+        "As Instance": false
+      },
+      "outputs": {
+        "Location": [0.0, 0.0, 0.0],
+        "Rotation": [0.0, 0.0, 0.0],
+        "Scale": [0.0, 0.0, 0.0]
+      }
+    },
+    {
+      "name": "Mesh Boolean",
+      "bl_idname": "GeometryNodeMeshBoolean",
+      "location": [-86.849, 139.991],
+      "mute": false,
+      "operation": "DIFFERENCE",
+      "solver": "MANIFOLD",
+      "inputs": {
+        "Self Intersection": false,
+        "Hole Tolerant": false
+      },
+      "outputs": {
+        "Intersecting Edges": false
+      }
+    },
+    {
+      "name": "Mesh Boolean.001",
+      "bl_idname": "GeometryNodeMeshBoolean",
+      "location": [-89.034, -78.745],
+      "mute": false,
+      "operation": "INTERSECT",
+      "solver": "MANIFOLD",
+      "inputs": {
+        "Self Intersection": false,
+        "Hole Tolerant": false
+      },
+      "outputs": {
+        "Intersecting Edges": false
+      }
+    },
+    {
+      "name": "Join Geometry",
+      "bl_idname": "GeometryNodeJoinGeometry",
+      "location": [353.46, 104.993],
+      "mute": false,
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Switch",
+      "bl_idname": "GeometryNodeSwitch",
+      "location": [115.519, 179.442],
+      "mute": false,
+      "input_type": "GEOMETRY",
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Switch.001",
+      "bl_idname": "GeometryNodeSwitch",
+      "location": [133.0, -30.544],
+      "mute": false,
+      "input_type": "GEOMETRY",
+      "inputs": {},
+      "outputs": {}
+    }
+  ],
+  "links": [
+    {
+      "from_node": "Group Input",
+      "to_node": "Mesh Boolean",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Object Info",
+      "to_node": "Mesh Boolean",
+      "from_socket": 4,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Mesh Boolean.001",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Object Info",
+      "to_node": "Mesh Boolean.001",
+      "from_socket": 4,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Mesh Boolean.001",
+      "from_socket": 0,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Switch",
+      "to_node": "Join Geometry",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Switch.001",
+      "to_node": "Join Geometry",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Join Geometry",
+      "to_node": "Group Output",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Mesh Boolean",
+      "to_node": "Switch",
+      "from_socket": 0,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Switch",
+      "from_socket": 3,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Mesh Boolean.001",
+      "to_node": "Switch.001",
+      "from_socket": 0,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Switch.001",
+      "from_socket": 2,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Object Info",
+      "from_socket": 1,
+      "to_socket": 0
+    }
+  ]
+}

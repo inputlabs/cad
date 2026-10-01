@@ -1,0 +1,32 @@
+{
+  "type": "MESH",
+  "location": [-19.927, 13.613, -5.421],
+  "rotation": [0.0, 0.0, 0.0],
+  "scale": [1.0, 1.0, 1.0],
+  "hide_viewport": false,
+  "modifiers": [
+    {
+      "type": "BOOLEAN",
+      "name": "body",
+      "object": "<_bpy_types.Object>Body",
+      "operation": "UNION",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "cut",
+      "object": "<_bpy_types.Object>touch cut with tolerance",
+      "operation": "INTERSECT",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "bumper cav",
+      "object": "<_bpy_types.Object>bumper cav",
+      "solver": "MANIFOLD"
+    }
+  ],
+  "vertices": [],
+  "edges": [],
+  "polygons": []
+}

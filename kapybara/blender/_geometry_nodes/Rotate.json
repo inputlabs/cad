@@ -1,0 +1,112 @@
+{
+  "bl_idname": "GeometryNodeTree",
+  "interface": [
+    {
+      "name": "Geometry",
+      "in_out": "OUTPUT",
+      "socket_type": "NodeSocketGeometry",
+      "subtype": null
+    },
+    {
+      "name": "Geometry",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketGeometry",
+      "subtype": null
+    },
+    {
+      "name": "X",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketFloat",
+      "subtype": "ANGLE"
+    },
+    {
+      "name": "Y",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketFloat",
+      "subtype": "ANGLE"
+    },
+    {
+      "name": "Z",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketFloat",
+      "subtype": "ANGLE"
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Group Input",
+      "bl_idname": "NodeGroupInput",
+      "location": [-523.848, 23.318],
+      "mute": false,
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Group Output",
+      "bl_idname": "NodeGroupOutput",
+      "location": [200.0, 0.0],
+      "mute": false,
+      "is_active_output": true,
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Transform Geometry",
+      "bl_idname": "GeometryNodeTransform",
+      "location": [-76.534, 146.984],
+      "mute": false,
+      "inputs": {
+        "Mode": "Components",
+        "Translation": [0.0, 0.0, 0.0],
+        "Scale": [1.0, 1.0, 1.0]
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Combine XYZ",
+      "bl_idname": "ShaderNodeCombineXYZ",
+      "location": [-282.843, -32.062],
+      "mute": false,
+      "inputs": {},
+      "outputs": {}
+    }
+  ],
+  "links": [
+    {
+      "from_node": "Transform Geometry",
+      "to_node": "Group Output",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Transform Geometry",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Combine XYZ",
+      "from_socket": 1,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Combine XYZ",
+      "from_socket": 2,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Combine XYZ",
+      "from_socket": 3,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Combine XYZ",
+      "to_node": "Transform Geometry",
+      "from_socket": 0,
+      "to_socket": 3
+    }
+  ]
+}

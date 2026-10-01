@@ -1,0 +1,27 @@
+{
+  "type": "MESH",
+  "location": [-18.936, -17.088, -8.422],
+  "rotation": [0.0, 0.0, 0.0],
+  "scale": [1.0, 1.0, 1.0],
+  "hide_viewport": true,
+  "modifiers": [
+    {
+      "type": "BOOLEAN",
+      "name": "body",
+      "object": "<_bpy_types.Object>Body",
+      "operation": "UNION",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "NODES",
+      "name": "offset",
+      "node_group": "<bpy.types.GeometryNodeTree>Offset",
+      "node_values": {
+        "Z": 1.5
+      }
+    }
+  ],
+  "vertices": [],
+  "edges": [],
+  "polygons": []
+}

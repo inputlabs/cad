@@ -1,0 +1,94 @@
+{
+  "type": "MESH",
+  "location": [0.0, 0.0, 0.0],
+  "rotation": [0.0, 0.0, 0.0],
+  "scale": [1.0, 1.0, 1.0],
+  "hide_viewport": false,
+  "modifiers": [
+    {
+      "type": "BOOLEAN",
+      "name": "body",
+      "show_render": false,
+      "object": "<_bpy_types.Object>Body",
+      "operation": "UNION",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "cut",
+      "show_render": false,
+      "object": "<_bpy_types.Object>Cut 1",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "cav marmota",
+      "object": "<_bpy_types.Object>marmota cav",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "cav triggers",
+      "object": "<_bpy_types.Object>trigger cav",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "cav triggers nuts",
+      "object": "<_bpy_types.Object>nuts triggers cav",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "hole horiz",
+      "object": "<_bpy_types.Object>trigger bolt hole",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "cav bumpers",
+      "object": "<_bpy_types.Object>bumper cav",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "bolt hole1",
+      "object": "<_bpy_types.Object>bolt case hole1",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "bolt hole1.001",
+      "show_viewport": false,
+      "object": "<_bpy_types.Object>bolt case hole2",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "home",
+      "object": "<_bpy_types.Object>home cav",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "home2",
+      "object": "<_bpy_types.Object>touch cav",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "touch",
+      "object": "<_bpy_types.Object>touch cut",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "encoder solder",
+      "object": "<_bpy_types.Object>encoder solder cav",
+      "solver": "MANIFOLD"
+    }
+  ],
+  "vertices": [],
+  "edges": [],
+  "polygons": []
+}

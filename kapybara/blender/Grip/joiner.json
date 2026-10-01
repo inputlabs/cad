@@ -1,0 +1,35 @@
+{
+  "type": "MESH",
+  "location": [0.0, 0.77, 6.904],
+  "rotation": [-35.0, 0.0, -0.0],
+  "scale": [1.0, 1.0, 1.0],
+  "hide_viewport": true,
+  "modifiers": [
+    {
+      "type": "BOOLEAN",
+      "name": "Boolean",
+      "show_in_editmode": true,
+      "object": "<_bpy_types.Object>joiner hole",
+      "operation": "UNION",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "DISPLACE",
+      "name": "Displace",
+      "mid_level": 0.0,
+      "strength": -0.2
+    },
+    {
+      "type": "NODES",
+      "name": "scaleX",
+      "node_group": "<bpy.types.GeometryNodeTree>Scale",
+      "node_values": {
+        "Scale": 0.95,
+        "X": true
+      }
+    }
+  ],
+  "vertices": [],
+  "edges": [],
+  "polygons": []
+}

@@ -1,0 +1,25 @@
+{
+  "type": "MESH",
+  "location": [0.0, 0.0, 0.0],
+  "rotation": [0.0, 0.0, 0.0],
+  "scale": [1.0, 1.0, 1.0],
+  "hide_viewport": true,
+  "modifiers": [
+    {
+      "type": "BOOLEAN",
+      "name": "Boolean",
+      "object": "<_bpy_types.Object>touch cut",
+      "operation": "UNION",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "DISPLACE",
+      "name": "Displace",
+      "mid_level": 0.0,
+      "strength": -0.05
+    }
+  ],
+  "vertices": [],
+  "edges": [],
+  "polygons": []
+}

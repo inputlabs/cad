@@ -1,0 +1,42 @@
+{
+  "type": "MESH",
+  "location": [0.0, 0.0, 0.0],
+  "rotation": [0.0, 0.0, 0.0],
+  "scale": [1.0, 1.0, 1.0],
+  "hide_viewport": false,
+  "modifiers": [
+    {
+      "type": "BOOLEAN",
+      "name": "body",
+      "show_render": false,
+      "object": "<_bpy_types.Object>Body",
+      "operation": "UNION",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "cut 1",
+      "show_render": false,
+      "object": "<_bpy_types.Object>Cut 1",
+      "operation": "INTERSECT",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "cut 2",
+      "show_render": false,
+      "object": "<_bpy_types.Object>Cut 2",
+      "operation": "INTERSECT",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "Boolean",
+      "object": "<_bpy_types.Object>PCB bracket cut",
+      "solver": "MANIFOLD"
+    }
+  ],
+  "vertices": [],
+  "edges": [],
+  "polygons": []
+}

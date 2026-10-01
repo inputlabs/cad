@@ -1,0 +1,94 @@
+{
+  "type": "MESH",
+  "location": [0.0, -41.16, 25.609],
+  "rotation": [12.0, 0.0, -0.0],
+  "scale": [1.0, 1.0, 1.0],
+  "hide_viewport": false,
+  "modifiers": [
+    {
+      "type": "MIRROR",
+      "name": "Mirror"
+    },
+    {
+      "type": "SUBSURF",
+      "name": "Subdivision",
+      "show_on_cage": true,
+      "levels": 4,
+      "render_levels": 4
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "body",
+      "object": "<_bpy_types.Object>Body",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "peg",
+      "object": "<_bpy_types.Object>peg",
+      "operation": "UNION",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "NODES",
+      "name": "Cut",
+      "show_viewport": false,
+      "node_group": "<bpy.types.GeometryNodeTree>Cut node",
+      "node_values": {
+        "Cut object": "<_bpy_types.Object>grip cut",
+        "Top": true
+      }
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "joiner",
+      "object": "<_bpy_types.Object>joiner hole"
+    }
+  ],
+  "vertices": [
+    [-12.5, -48.0, -13.0],
+    [-12.5, -48.925, -5.906],
+    [-16.5, 33.0, -12.0],
+    [-16.5, 28.82, -3.314],
+    [0.0, 33.0, -12.0],
+    [0.0, 28.82, -1.314],
+    [0.0, -49.0, -14.0],
+    [0.0, -48.925, -3.906],
+    [-14.5, -6.425, -12.728],
+    [0.0, -7.009, -12.17],
+    [-13.0, -6.549, -2.413],
+    [0.0, -6.549, 6.587]
+  ],
+  "edges": [
+    [8, 0],
+    [0, 1],
+    [10, 3],
+    [3, 2],
+    [4, 2],
+    [7, 1],
+    [3, 5],
+    [0, 6],
+    [11, 7],
+    [9, 6],
+    [7, 6],
+    [5, 4],
+    [2, 8],
+    [4, 9],
+    [9, 8],
+    [1, 10],
+    [5, 11],
+    [10, 11],
+    [10, 8]
+  ],
+  "polygons": [
+    [8, 10, 3, 2],
+    [6, 7, 1, 0],
+    [11, 10, 1, 7],
+    [8, 9, 6, 0],
+    [2, 3, 5, 4],
+    [2, 4, 9, 8],
+    [5, 3, 10, 11],
+    [0, 1, 10, 8]
+  ],
+  "crease_edge": [1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.89, 0.0, 0.0, 1.0, 0.89, 0.0, 0.0, 0.0, 0.0, 0.0]
+}

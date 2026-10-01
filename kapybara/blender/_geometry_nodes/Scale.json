@@ -1,0 +1,125 @@
+{
+  "bl_idname": "GeometryNodeTree",
+  "interface": [
+    {
+      "name": "Geometry",
+      "in_out": "OUTPUT",
+      "socket_type": "NodeSocketGeometry",
+      "subtype": null
+    },
+    {
+      "name": "Geometry",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketGeometry",
+      "subtype": null
+    },
+    {
+      "name": "Scale",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketFloat",
+      "subtype": "NONE"
+    },
+    {
+      "name": "X",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketBool",
+      "subtype": null
+    },
+    {
+      "name": "Y",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketBool",
+      "subtype": null
+    },
+    {
+      "name": "Z",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketBool",
+      "subtype": null
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Group Input",
+      "bl_idname": "NodeGroupInput",
+      "location": [-457.097, 109.561],
+      "mute": false,
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Group Output",
+      "bl_idname": "NodeGroupOutput",
+      "location": [200.0, 0.0],
+      "mute": false,
+      "is_active_output": true,
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Scale Elements",
+      "bl_idname": "GeometryNodeScaleElements",
+      "location": [-61.285, 81.623],
+      "mute": false,
+      "domain": "FACE",
+      "inputs": {
+        "Selection": true,
+        "Center": [0.0, 0.0, 0.0],
+        "Scale Mode": "Single Axis"
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Combine XYZ",
+      "bl_idname": "ShaderNodeCombineXYZ",
+      "location": [-259.365, -45.468],
+      "mute": false,
+      "inputs": {},
+      "outputs": {}
+    }
+  ],
+  "links": [
+    {
+      "from_node": "Scale Elements",
+      "to_node": "Group Output",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Scale Elements",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Combine XYZ",
+      "from_socket": 2,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Combine XYZ",
+      "from_socket": 3,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Combine XYZ",
+      "from_socket": 4,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Combine XYZ",
+      "to_node": "Scale Elements",
+      "from_socket": 0,
+      "to_socket": 5
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Scale Elements",
+      "from_socket": 1,
+      "to_socket": 2
+    }
+  ]
+}

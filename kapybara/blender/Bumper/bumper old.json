@@ -1,0 +1,17 @@
+{
+  "type": "MESH",
+  "location": [0.0, 16.166, -18.308],
+  "rotation": [-65.0, 0.0, 0.0],
+  "scale": [1.0, 1.0, 1.0],
+  "hide_viewport": true,
+  "modifiers": [
+    {
+      "type": "BEVEL",
+      "name": "Bevel",
+      "show_in_editmode": false,
+      "width": 0.75,
+      "width_pct": 0.75,
+      "segments": 3
+    }
+  ]
+}

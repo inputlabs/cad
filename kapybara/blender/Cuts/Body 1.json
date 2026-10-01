@@ -1,0 +1,107 @@
+{
+  "type": "MESH",
+  "location": [0.0, 0.0, 0.0],
+  "rotation": [0.0, 0.0, 0.0],
+  "scale": [1.0, 1.0, 1.0],
+  "hide_viewport": false,
+  "modifiers": [
+    {
+      "type": "BOOLEAN",
+      "name": "body",
+      "show_render": false,
+      "object": "<_bpy_types.Object>Body",
+      "operation": "UNION",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "cut",
+      "show_render": false,
+      "object": "<_bpy_types.Object>Cut 2",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "batt cav",
+      "object": "<_bpy_types.Object>battery 14430 cav",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "stick cav",
+      "object": "<_bpy_types.Object>thumbstick cav",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "stick hole",
+      "object": "<_bpy_types.Object>thumbstick hole",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "enc cav",
+      "object": "<_bpy_types.Object>encoder cav",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "select cav",
+      "object": "<_bpy_types.Object>select cav",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "wheel cav",
+      "object": "<_bpy_types.Object>wheel cav",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "bold shroud",
+      "object": "<_bpy_types.Object>bolt case shroud",
+      "operation": "UNION",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "bolt hole1",
+      "object": "<_bpy_types.Object>bolt case hole1",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "bolt hole2",
+      "show_viewport": false,
+      "show_render": false,
+      "object": "<_bpy_types.Object>bolt case hole2",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "led",
+      "object": "<_bpy_types.Object>LED holes",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "led cav",
+      "object": "<_bpy_types.Object>LED cav",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "marmota cav",
+      "object": "<_bpy_types.Object>marmota cav",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "encoder solder",
+      "object": "<_bpy_types.Object>encoder solder cav"
+    }
+  ],
+  "vertices": [],
+  "edges": [],
+  "polygons": []
+}

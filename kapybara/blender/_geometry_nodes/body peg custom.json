@@ -1,0 +1,105 @@
+{
+  "bl_idname": "GeometryNodeTree",
+  "interface": [
+    {
+      "name": "Geometry",
+      "in_out": "OUTPUT",
+      "socket_type": "NodeSocketGeometry",
+      "subtype": null
+    },
+    {
+      "name": "Scale Z",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketFloat",
+      "subtype": "NONE"
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Group Output",
+      "bl_idname": "NodeGroupOutput",
+      "location": [200.0, 0.0],
+      "mute": false,
+      "is_active_output": true,
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Transform Geometry",
+      "bl_idname": "GeometryNodeTransform",
+      "location": [-68.58, 94.046],
+      "mute": false,
+      "inputs": {
+        "Mode": "Components",
+        "Rotation": [0.610865, 0.0, 0.0]
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Object Info",
+      "bl_idname": "GeometryNodeObjectInfo",
+      "location": [-438.365, -71.022],
+      "mute": false,
+      "transform_space": "ORIGINAL",
+      "inputs": {
+        "Object": "<_bpy_types.Object>Body peg hole",
+        "As Instance": false
+      },
+      "outputs": {
+        "Rotation": [0.0, 0.0, 0.0],
+        "Scale": [0.0, 0.0, 0.0]
+      }
+    },
+    {
+      "name": "Group Input",
+      "bl_idname": "NodeGroupInput",
+      "location": [-558.507, 84.751],
+      "mute": false,
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Combine XYZ",
+      "bl_idname": "ShaderNodeCombineXYZ",
+      "location": [-371.621, 111.943],
+      "mute": false,
+      "inputs": {
+        "X": 1.0,
+        "Y": 1.0
+      },
+      "outputs": {}
+    }
+  ],
+  "links": [
+    {
+      "from_node": "Transform Geometry",
+      "to_node": "Group Output",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Object Info",
+      "to_node": "Transform Geometry",
+      "from_socket": 4,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Object Info",
+      "to_node": "Transform Geometry",
+      "from_socket": 1,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Combine XYZ",
+      "from_socket": 0,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Combine XYZ",
+      "to_node": "Transform Geometry",
+      "from_socket": 0,
+      "to_socket": 4
+    }
+  ]
+}

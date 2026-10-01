@@ -1,0 +1,26 @@
+{
+  "type": "MESH",
+  "location": [0.0, 0.77, 6.904],
+  "rotation": [-35.0, 0.0, -0.0],
+  "scale": [1.0, 1.0, 1.0],
+  "hide_viewport": true,
+  "modifiers": [
+    {
+      "type": "NODES",
+      "name": "GeometryNodes",
+      "node_group": "<bpy.types.GeometryNodeTree>body peg custom",
+      "node_values": {
+        "Scale Z": 0.85
+      }
+    },
+    {
+      "type": "DISPLACE",
+      "name": "tolerance XY",
+      "mid_level": 0.0,
+      "strength": -0.15
+    }
+  ],
+  "vertices": [],
+  "edges": [],
+  "polygons": []
+}

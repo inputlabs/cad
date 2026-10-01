@@ -1,0 +1,15 @@
+{
+  "type": "MESH",
+  "location": [-9.0, 20.432, 8.425],
+  "rotation": [23.0, 0.0, -180.0],
+  "scale": [1.0, 1.0, 1.0],
+  "hide_viewport": true,
+  "modifiers": [
+    {
+      "type": "MIRROR",
+      "name": "Mirror",
+      "show_viewport": false,
+      "mirror_object": "<_bpy_types.Object>Body"
+    }
+  ]
+}

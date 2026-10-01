@@ -1,5 +1,6 @@
 *.blend1
 backup/
+*backup/
 **/old/
 **/stl/
 **/step/
@@ -8,3 +9,4 @@ backup/
 .vscode/
 __pycache__/
 venv/
+log.txt

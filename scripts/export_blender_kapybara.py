@@ -1,7 +1,8 @@
 from pathlib import Path
+import math
 import bpy
 
-def export(stl_name, obj_names, modifiers):
+def export(stl_name, obj_names, modifiers, rotation=[0,0,0]):
     # Select objects.
     bpy.ops.object.select_all(action='DESELECT')
     for obj in reversed(bpy.data.objects):
@@ -34,6 +35,11 @@ def export(stl_name, obj_names, modifiers):
         filepath=str(path),
         export_selected_objects=True,
         apply_modifiers=True,
+        global_rotation=(
+            math.radians(rotation[0]),
+            math.radians(rotation[1]),
+            math.radians(rotation[2]),
+        ),
     )
 
 # WARNING:
@@ -42,7 +48,7 @@ def export(stl_name, obj_names, modifiers):
 bpy.ops.wm.open_mainfile(filepath="kapybara/blender/kapybara.blend")
 
 # Case.
-export('case_bottom_right', ['Body', 'trigger', 'bumper', 'home'], ['body_bottom'])
+export('case_bottom_right', ['Body', 'trigger', 'bumper', 'home'], ['body_bottom'], [35, 0, 0])
 export('case_bottom_left', ['Body', 'trigger', 'bumper', 'home'], ['body_bottom', 'bumper_mirror'])
 export('case_top', ['Body', 'thumbstick', 'select', 'wheel'], ['body_top'])
 export('case_peg', ['Body peg'], [])
