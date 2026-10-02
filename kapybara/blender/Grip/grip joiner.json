@@ -9,7 +9,7 @@
       "type": "BOOLEAN",
       "name": "Boolean",
       "show_in_editmode": true,
-      "object": "<_bpy_types.Object>joiner hole",
+      "object": "<_bpy_types.Object>grip joiner hole",
       "operation": "UNION",
       "solver": "MANIFOLD"
     },

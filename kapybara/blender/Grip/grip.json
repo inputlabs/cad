@@ -25,7 +25,7 @@
     {
       "type": "BOOLEAN",
       "name": "peg",
-      "object": "<_bpy_types.Object>peg",
+      "object": "<_bpy_types.Object>grip peg",
       "operation": "UNION",
       "solver": "MANIFOLD"
     },
@@ -41,7 +41,7 @@
     {
       "type": "BOOLEAN",
       "name": "joiner",
-      "object": "<_bpy_types.Object>joiner hole"
+      "object": "<_bpy_types.Object>grip joiner hole"
     }
   ],
   "vertices": [

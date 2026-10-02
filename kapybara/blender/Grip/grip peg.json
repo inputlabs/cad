@@ -21,8 +21,7 @@
       "name": "Bevel",
       "show_in_editmode": false,
       "width": 0.5,
-      "width_pct": 0.5,
-      "vertex_group": "bevel"
+      "width_pct": 0.5
     }
   ],
   "vertices": [
