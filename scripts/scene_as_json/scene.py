@@ -66,6 +66,7 @@ def import_scene(log, folder):
             if hasattr(data, 'modifiers'):
                 for modifier_data in data.modifiers:
                     create_modifier(log, obj, modifier_data)
+    sort_collections()
 
 def clear_scene():
     # Delete all objects.
@@ -123,3 +124,13 @@ def set_scene():
                 space.overlay.grid_scale = 0.001
                 space.show_gizmo = True
                 space.show_gizmo_object_translate = True
+
+def sort_collections():
+    root = bpy.context.scene.collection
+    sorted_children = sorted(root.children, key=lambda c: c.name.lower())
+    # Unlink.
+    for child in list(root.children):
+        root.children.unlink(child)
+    # Relink sorted.
+    for child in sorted_children:
+        root.children.link(child)
