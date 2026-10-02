@@ -1,4 +1,5 @@
 import math
+import mathutils
 import json
 from pathlib import Path
 from types import SimpleNamespace
@@ -96,7 +97,8 @@ def create_object(log, folder, path, data):
             create_mesh_attribute(mesh, 'bevel_weight_edge', 'EDGE', data.bevel_weight_edge)
         # Import from binary.
         if hasattr(data, 'export_mesh'):
-            mesh = gltf_to_mesh(log, folder, name)
+            glb_path = folder / '_big_mesh' / f'{name}.glb'
+            mesh = gltf_to_mesh(log, glb_path, name)
         mesh.update()
         obj = bpy.data.objects.new(name, mesh)
     elif data.type == 'EMPTY':
@@ -186,8 +188,8 @@ def create_modifier(log, obj, data):
             continue
         setattr(modifier, key, value)
 
-def mesh_to_gltf(log, obj, folder):
-    log(f'mesh_to_gltf {obj.name} {folder}')
+def mesh_to_gltf(log, obj, filepath):
+    log(f'mesh_to_gltf {obj.name} {filepath}')
     # Visibility.
     was_hidden = obj.hide_get()
     was_hidden_viewport = obj.hide_viewport
@@ -199,8 +201,7 @@ def mesh_to_gltf(log, obj, folder):
     bpy.context.view_layer.objects.active = obj
     bpy.context.view_layer.update()
     # Write.
-    folder.mkdir(parents=True, exist_ok=True)
-    filepath = folder / f'{obj.name}.glb'
+    filepath.parent.mkdir(parents=True, exist_ok=True)
     bpy.ops.export_scene.gltf(
         filepath=str(filepath),
         export_format='GLB',
@@ -226,18 +227,24 @@ def mesh_to_gltf(log, obj, folder):
     obj.hide_set(was_hidden)
     deselect_all_objects()
 
-def gltf_to_mesh(log, folder, name):
-    filename = folder / '_big_mesh' / f'{name}.glb'
-    log(f'import_gltf {filename}', 1)
-    bpy.ops.import_scene.gltf(filepath=str(filename))
-    imported_obj = get_object(name)
-    imported_obj.name = f'{imported_obj.name}-imported'
-    imported_mesh = imported_obj.data
-    mesh = imported_mesh.copy()
+def gltf_to_mesh(log, filepath, name):
+    # Import.
+    log(f'gltf_to_mesh {filepath}', 1)
+    bpy.ops.import_scene.gltf(filepath=str(filepath))
+    temp_obj = get_object(name)
+    temp_obj.name = f'{temp_obj.name}-imported'
+    # Scale (GLTF unit is always 1 meter).
+    temp_obj.scale *= 0.001
+    scale_matrix = mathutils.Matrix.Diagonal((*temp_obj.scale, 1.0))
+    temp_obj.data.transform(scale_matrix)
+    temp_obj.scale = (1.0, 1.0, 1.0)
+    # Copy mesh.
+    temp_mesh = temp_obj.data
+    mesh = temp_mesh.copy()
     mesh.name = name
-    # Delete temp object and mesh.
-    bpy.data.objects.remove(imported_obj, do_unlink=True)
-    bpy.data.meshes.remove(imported_mesh)
+    # Clean up.
+    bpy.data.objects.remove(temp_obj, do_unlink=True)
+    bpy.data.meshes.remove(temp_mesh)
     return mesh
 
 def deselect_all_objects():

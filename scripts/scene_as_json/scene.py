@@ -25,8 +25,8 @@ def export_scene(log, folder):
         write_file(obj_path, obj_json)
         if export_mesh:
             pass  # This is very buggy in Blender 5.2 / doing exports manually for now.
-            # big_mesh_path = folder / '_big_mesh'
-            # mesh_to_gltf(log, obj, big_mesh_path)
+            # glb_path = folder / '_big_mesh' / f'{obj.name}.glb'
+            # mesh_to_gltf(log, obj, glb_path)
     for nodegroup in bpy.data.node_groups:
         if nodegroup.library:  # Ignore built-in or external node groups.
             continue
@@ -90,9 +90,15 @@ def clear_scene():
                 data_type.remove(block)
 
 def set_scene():
+    scene = bpy.context.scene
+    scene.unit_settings.system = 'METRIC'
+    scene.unit_settings.length_unit = 'MILLIMETERS'
+    scene.unit_settings.scale_length = 0.001
+    # Set tab.
     modeling = bpy.data.workspaces.get("Modeling")
     window = bpy.context.window
     window.workspace = modeling  # Set active.
+    # View settings.
     for screen in modeling.screens:
         for area in screen.areas:
             if area.type == 'VIEW_3D':
@@ -113,3 +119,7 @@ def set_scene():
                 space.shading.type = 'SOLID'
                 space.shading.light = 'MATCAP'
                 space.shading.studio_light = 'check_normal+y.exr'
+                # Grid and gizmo.
+                space.overlay.grid_scale = 0.001
+                space.show_gizmo = True
+                space.show_gizmo_object_translate = True
