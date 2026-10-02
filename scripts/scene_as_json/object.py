@@ -61,11 +61,13 @@ def serialize_object(log, obj):
             attach_mesh_attr('bevel_weight_edge')
         else:
             log(f"Excluded '{obj.name}' (too many vertices)")
+            data.export_mesh = True
     json_string = json.dumps(vars(data), indent=2)
     json_string = preformat_json(json_string)
-    return json_string
+    export_mesh = hasattr(data, 'export_mesh')
+    return json_string, export_mesh
 
-def create_object(log, path, data):
+def create_object(log, folder, path, data):
     log(f'create_object {path}')
     # Create collection hierarchy.
     collection = bpy.context.scene.collection
@@ -92,6 +94,9 @@ def create_object(log, path, data):
             create_mesh_attribute(mesh, 'crease_edge', 'EDGE', data.crease_edge)
         if hasattr(data, 'bevel_weight_edge'):
             create_mesh_attribute(mesh, 'bevel_weight_edge', 'EDGE', data.bevel_weight_edge)
+        # Import from binary.
+        if hasattr(data, 'export_mesh'):
+            mesh = gltf_to_mesh(log, folder, name)
         mesh.update()
         obj = bpy.data.objects.new(name, mesh)
     elif data.type == 'EMPTY':
@@ -180,3 +185,61 @@ def create_modifier(log, obj, data):
                 set_socket_value(modifier, node_key, parse_value(node_value))
             continue
         setattr(modifier, key, value)
+
+def mesh_to_gltf(log, obj, folder):
+    log(f'mesh_to_gltf {obj.name} {folder}')
+    # Visibility.
+    was_hidden = obj.hide_get()
+    was_hidden_viewport = obj.hide_viewport
+    obj.hide_viewport = False
+    obj.hide_set(False)
+    # Selection.
+    deselect_all_objects()
+    obj.select_set(True)
+    bpy.context.view_layer.objects.active = obj
+    bpy.context.view_layer.update()
+    # Write.
+    folder.mkdir(parents=True, exist_ok=True)
+    filepath = folder / f'{obj.name}.glb'
+    bpy.ops.export_scene.gltf(
+        filepath=str(filepath),
+        export_format='GLB',
+        use_selection=True,
+        use_visible=False,
+        export_apply=False,  # Apply modifiers.
+        export_normals=False,
+        export_texcoords=False,
+        export_attributes=False,
+        export_lights=False,
+        export_cameras=False,
+        export_animations=False,
+        export_skins=False,
+        export_morph=False,
+        export_extras=False,
+        export_materials='NONE',
+        use_mesh_edges=False,  # Exclude loose 1D edges (non-face lines).
+        use_mesh_vertices=False,  # Exclude loose 0D vertices (point clouds).
+        export_draco_mesh_compression_enable=True,  # Compression.
+    )
+    # Restore.
+    obj.hide_viewport = was_hidden_viewport
+    obj.hide_set(was_hidden)
+    deselect_all_objects()
+
+def gltf_to_mesh(log, folder, name):
+    filename = folder / '_big_mesh' / f'{name}.glb'
+    log(f'import_gltf {filename}', 1)
+    bpy.ops.import_scene.gltf(filepath=str(filename))
+    imported_obj = get_object(name)
+    imported_obj.name = f'{imported_obj.name}-imported'
+    imported_mesh = imported_obj.data
+    mesh = imported_mesh.copy()
+    mesh.name = name
+    # Delete temp object and mesh.
+    bpy.data.objects.remove(imported_obj, do_unlink=True)
+    bpy.data.meshes.remove(imported_mesh)
+    return mesh
+
+def deselect_all_objects():
+    for o in bpy.context.view_layer.objects:
+        o.select_set(False)

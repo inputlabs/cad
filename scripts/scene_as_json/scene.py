@@ -1,7 +1,6 @@
 import math
 import mathutils
 import json
-
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -14,17 +13,22 @@ from .object import (
     serialize_object,
     create_object,
     create_modifier,
+    mesh_to_gltf,
 )
 
 def export_scene(log, folder):
     folder = Path(folder)
     objs = list(bpy.context.scene.collection.all_objects)
     for obj in objs:
-        obj_json = serialize_object(log, obj)
+        obj_json, export_mesh = serialize_object(log, obj)
         obj_path = folder / f'{get_object_path(obj)}.json'
         write_file(obj_path, obj_json)
+        if export_mesh:
+            pass  # This is very buggy in Blender 5.2 / doing exports manually for now.
+            # big_mesh_path = folder / '_big_mesh'
+            # mesh_to_gltf(log, obj, big_mesh_path)
     for nodegroup in bpy.data.node_groups:
-        if nodegroup.library:  # Is a built-in or external node group.
+        if nodegroup.library:  # Ignore built-in or external node groups.
             continue
         ng_json = serialize_nodegroup(log, nodegroup)
         ng_path = folder / '_geometry_nodes' / f'{nodegroup.name}.json'
@@ -52,7 +56,7 @@ def import_scene(log, folder):
     for data_path, data in json_objects.items():
         root = data_path.parts[0]
         if not root.startswith('_'):
-            create_object(log, data_path, data)
+            create_object(log, folder, data_path, data)
     # Recreate modifiers (all objects can be cross-linked).
     for data_path, data in json_objects.items():
         root = data_path.parts[0]

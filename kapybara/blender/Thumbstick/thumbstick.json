@@ -10,5 +10,6 @@
       "name": "Mirror",
       "mirror_object": "<_bpy_types.Object>Body"
     }
-  ]
+  ],
+  "export_mesh": true
 }
