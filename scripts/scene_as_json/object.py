@@ -230,9 +230,11 @@ def mesh_to_gltf(log, obj, filepath):
 def gltf_to_mesh(log, filepath, name):
     # Import.
     log(f'gltf_to_mesh {filepath}', 1)
+    before = set(bpy.data.objects)
     bpy.ops.import_scene.gltf(filepath=str(filepath))
-    temp_obj = get_object(name)
-    temp_obj.name = f'{temp_obj.name}-imported'
+    new_objects = set(bpy.data.objects) - before
+    temp_obj = list(new_objects)[0]
+    temp_obj.name = f'{name}-imported'
     # Scale (GLTF unit is always 1 meter).
     temp_obj.scale *= 0.001
     scale_matrix = mathutils.Matrix.Diagonal((*temp_obj.scale, 1.0))
