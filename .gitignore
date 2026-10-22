@@ -1,6 +1,6 @@
 *.blend1
 backup/
-*backup/
+*backup*/
 **/old/
 **/stl/
 **/step/

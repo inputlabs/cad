@@ -1,0 +1,36 @@
+{
+  "type": "MESH",
+  "location": [0.0, -16.05, 27.96],
+  "rotation": [0.0, 0.0, 0.0],
+  "scale": [1.0, 1.0, 1.0],
+  "hide_viewport": true,
+  "modifiers": [
+    {
+      "type": "NODES",
+      "name": "GeometryNodes",
+      "node_group": "<bpy.types.GeometryNodeTree>Cylinder",
+      "node_values": {
+        "Sides": 32,
+        "Radius": 2.35,
+        "Depth": 11.09,
+        "Invert": true
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "GeometryNodes.001",
+      "node_group": "<bpy.types.GeometryNodeTree>Cylinder",
+      "node_values": {
+        "Sides": 32,
+        "Radius": 1.4,
+        "Depth": 34.099998,
+        "Invert": true
+      }
+    }
+  ],
+  "vertices": [
+    [0.732, 0.37, -10.01]
+  ],
+  "edges": [],
+  "polygons": []
+}

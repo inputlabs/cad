@@ -52,15 +52,14 @@
     },
     {
       "type": "BOOLEAN",
-      "name": "bolt hole1",
-      "object": "<_bpy_types.Object>bolt case hole1",
+      "name": "fastener nut",
+      "object": "<_bpy_types.Object>fasterner nut cav",
       "solver": "MANIFOLD"
     },
     {
       "type": "BOOLEAN",
-      "name": "bolt hole1.001",
-      "show_viewport": false,
-      "object": "<_bpy_types.Object>bolt case hole2",
+      "name": "fastener bolt",
+      "object": "<_bpy_types.Object>fastener bolt hole",
       "solver": "MANIFOLD"
     },
     {

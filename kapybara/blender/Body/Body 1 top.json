@@ -59,22 +59,14 @@
     {
       "type": "BOOLEAN",
       "name": "bold shroud",
-      "object": "<_bpy_types.Object>bolt case shroud",
+      "object": "<_bpy_types.Object>fastener bolt shroud",
       "operation": "UNION",
       "solver": "MANIFOLD"
     },
     {
       "type": "BOOLEAN",
-      "name": "bolt hole1",
-      "object": "<_bpy_types.Object>bolt case hole1",
-      "solver": "MANIFOLD"
-    },
-    {
-      "type": "BOOLEAN",
-      "name": "bolt hole2",
-      "show_viewport": false,
-      "show_render": false,
-      "object": "<_bpy_types.Object>bolt case hole2",
+      "name": "fastener bolt",
+      "object": "<_bpy_types.Object>fastener bolt hole",
       "solver": "MANIFOLD"
     },
     {

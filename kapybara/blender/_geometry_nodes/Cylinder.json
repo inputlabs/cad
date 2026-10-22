@@ -1,0 +1,328 @@
+{
+  "bl_idname": "GeometryNodeTree",
+  "interface": [
+    {
+      "name": "Geometry",
+      "in_out": "OUTPUT",
+      "socket_type": "NodeSocketGeometry",
+      "subtype": null
+    },
+    {
+      "name": "Geometry",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketGeometry",
+      "subtype": null
+    },
+    {
+      "name": "Sides",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketInt",
+      "subtype": "NONE"
+    },
+    {
+      "name": "Radius",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketFloat",
+      "subtype": "NONE"
+    },
+    {
+      "name": "Depth",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketFloat",
+      "subtype": "NONE"
+    },
+    {
+      "name": "Offset",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketFloat",
+      "subtype": "NONE"
+    },
+    {
+      "name": "Invert",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketBool",
+      "subtype": null
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Group Input",
+      "bl_idname": "NodeGroupInput",
+      "location": [-820.005, -39.742],
+      "mute": false,
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Group Output",
+      "bl_idname": "NodeGroupOutput",
+      "location": [733.79, -46.787],
+      "mute": false,
+      "is_active_output": true,
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Cylinder",
+      "bl_idname": "GeometryNodeMeshCylinder",
+      "location": [-207.398, -52.96],
+      "mute": false,
+      "fill_type": "NGON",
+      "inputs": {
+        "Side Segments": 1,
+        "Fill Segments": 1
+      },
+      "outputs": {
+        "Top": false,
+        "Side": false,
+        "Bottom": false,
+        "UV Map": [0.0, 0.0, 0.0]
+      }
+    },
+    {
+      "name": "Set Position",
+      "bl_idname": "GeometryNodeSetPosition",
+      "location": [64.773, -87.487],
+      "mute": false,
+      "inputs": {
+        "Selection": true,
+        "Position": [0.0, 0.0, 0.0]
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Math",
+      "bl_idname": "ShaderNodeMath",
+      "location": [-611.821, -389.347],
+      "mute": false,
+      "operation": "DIVIDE",
+      "use_clamp": false,
+      "inputs": {
+        "Value": 0.5
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Combine XYZ",
+      "bl_idname": "ShaderNodeCombineXYZ",
+      "location": [31.348, -403.814],
+      "mute": false,
+      "inputs": {
+        "X": 0.0,
+        "Y": 0.0
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Math.001",
+      "bl_idname": "ShaderNodeMath",
+      "location": [-341.314, -396.154],
+      "mute": false,
+      "operation": "ADD",
+      "use_clamp": false,
+      "inputs": {
+        "Value": 0.5
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Mesh Boolean",
+      "bl_idname": "GeometryNodeMeshBoolean",
+      "location": [299.554, -135.417],
+      "mute": false,
+      "operation": "UNION",
+      "solver": "MANIFOLD",
+      "inputs": {
+        "Self Intersection": false,
+        "Hole Tolerant": false
+      },
+      "outputs": {
+        "Intersecting Edges": false
+      }
+    },
+    {
+      "name": "Switch",
+      "bl_idname": "GeometryNodeSwitch",
+      "location": [478.993, 81.407],
+      "mute": false,
+      "input_type": "GEOMETRY",
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Domain Size",
+      "bl_idname": "GeometryNodeAttributeDomainSize",
+      "location": [-493.782, 222.012],
+      "mute": false,
+      "component": "MESH",
+      "inputs": {},
+      "outputs": {
+        "Point Count": 0,
+        "Edge Count": 0,
+        "Face Corner Count": 0,
+        "Spline Count": 0,
+        "Instance Count": 0,
+        "Layer Count": 0
+      }
+    },
+    {
+      "name": "Compare",
+      "bl_idname": "FunctionNodeCompare",
+      "location": [-302.927, 219.409],
+      "mute": false,
+      "operation": "GREATER_THAN",
+      "data_type": "FLOAT",
+      "mode": "ELEMENT",
+      "inputs": {
+        "B": 0.0
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Math.002",
+      "bl_idname": "ShaderNodeMath",
+      "location": [-142.535, -413.463],
+      "mute": false,
+      "operation": "MULTIPLY",
+      "use_clamp": false,
+      "inputs": {
+        "Value": 0.5
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Switch.001",
+      "bl_idname": "GeometryNodeSwitch",
+      "location": [-366.315, -601.713],
+      "mute": false,
+      "input_type": "FLOAT",
+      "inputs": {
+        "False": 1.0,
+        "True": -1.0
+      },
+      "outputs": {}
+    }
+  ],
+  "links": [
+    {
+      "from_node": "Group Input",
+      "to_node": "Cylinder",
+      "from_socket": 1,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Cylinder",
+      "from_socket": 2,
+      "to_socket": 3
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Cylinder",
+      "from_socket": 3,
+      "to_socket": 4
+    },
+    {
+      "from_node": "Cylinder",
+      "to_node": "Set Position",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Math",
+      "from_socket": 3,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Combine XYZ",
+      "to_node": "Set Position",
+      "from_socket": 0,
+      "to_socket": 3
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Math.001",
+      "from_socket": 4,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Math",
+      "to_node": "Math.001",
+      "from_socket": 0,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Set Position",
+      "to_node": "Mesh Boolean",
+      "from_socket": 0,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Mesh Boolean",
+      "from_socket": 0,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Domain Size",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Compare",
+      "to_node": "Switch",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Mesh Boolean",
+      "to_node": "Switch",
+      "from_socket": 0,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Set Position",
+      "to_node": "Switch",
+      "from_socket": 0,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Switch",
+      "to_node": "Group Output",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Domain Size",
+      "to_node": "Compare",
+      "from_socket": 2,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Math.001",
+      "to_node": "Math.002",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Math.002",
+      "to_node": "Combine XYZ",
+      "from_socket": 0,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Switch.001",
+      "from_socket": 5,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Switch.001",
+      "to_node": "Math.002",
+      "from_socket": 0,
+      "to_socket": 1
+    }
+  ]
+}
