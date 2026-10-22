@@ -40,7 +40,7 @@
     },
     {
       "type": "BOOLEAN",
-      "name": "hole horiz",
+      "name": "trigger bolt hole",
       "object": "<_bpy_types.Object>trigger bolt hole",
       "solver": "MANIFOLD"
     },
