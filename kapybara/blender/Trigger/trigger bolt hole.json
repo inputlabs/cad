@@ -10,7 +10,7 @@
       "name": "Wide cylinder",
       "node_group": "<bpy.types.GeometryNodeTree>Cylinder",
       "node_values": {
-        "Sides": 32,
+        "Circle sides": 32,
         "Radius": 2.418,
         "Depth": 17.4
       }
@@ -20,7 +20,7 @@
       "name": "Thin cylinder",
       "node_group": "<bpy.types.GeometryNodeTree>Cylinder",
       "node_values": {
-        "Sides": 32,
+        "Circle sides": 32,
         "Radius": 1.31,
         "Depth": 30.0
       }
