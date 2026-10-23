@@ -46,7 +46,7 @@ def get_geometry_node_group(name):
         node_group = bpy.data.node_groups.get(name)
         if node_group:
             return node_group
-    return None
+    raise Exception(f"Not found node group '${name}'")
 
 def get_socket_value(modifier, name):
     for item in modifier.node_group.interface.items_tree:
@@ -156,7 +156,14 @@ def create_nodegroup(log, name, data):
         for prop_key, prop_value in node_data.__dict__.items():
             if prop_key in ['inputs', 'outputs']:
                 continue
-            setattr(node, prop_key, prop_value)
+            # Reference to another nodegroup.
+            if isinstance(prop_value, str) and prop_value.startswith('<'):
+                ref_ng_name = prop_value.split('>')[1]
+                ref_ng = get_geometry_node_group(ref_ng_name)
+                log(f'link nodegroup {prop_key} {ref_ng}', 1)
+                setattr(node, prop_key, ref_ng)
+            else:
+                setattr(node, prop_key, prop_value)
         for input_key, input_value in node_data.inputs.__dict__.items():
             for input_instance in node.inputs:
                 if input_instance.identifier == input_key:

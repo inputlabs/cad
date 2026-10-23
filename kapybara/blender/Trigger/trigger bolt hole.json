@@ -28,7 +28,7 @@
     {
       "type": "NODES",
       "name": "Mirror",
-      "node_group": "<bpy.types.GeometryNodeTree>Mirror manifold",
+      "node_group": "<bpy.types.GeometryNodeTree>Mirror_manifold",
       "node_values": {
         "Z": true
       }

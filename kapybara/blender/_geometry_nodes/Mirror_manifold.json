@@ -36,7 +36,7 @@
     {
       "name": "Group Input",
       "bl_idname": "NodeGroupInput",
-      "location": [-745.221, 296.029],
+      "location": [-616.154, 257.795],
       "mute": false,
       "inputs": {},
       "outputs": {}
@@ -44,7 +44,7 @@
     {
       "name": "Group Output",
       "bl_idname": "NodeGroupOutput",
-      "location": [898.38, 60.867],
+      "location": [895.568, 24.282],
       "mute": false,
       "is_active_output": true,
       "inputs": {},
@@ -53,7 +53,7 @@
     {
       "name": "Transform Geometry",
       "bl_idname": "GeometryNodeTransform",
-      "location": [302.605, -58.971],
+      "location": [299.793, -95.556],
       "mute": false,
       "inputs": {
         "Mode": "Components",
@@ -65,7 +65,7 @@
     {
       "name": "Mesh Boolean",
       "bl_idname": "GeometryNodeMeshBoolean",
-      "location": [661.024, 137.356],
+      "location": [658.212, 100.771],
       "mute": false,
       "operation": "UNION",
       "solver": "MANIFOLD",
@@ -80,7 +80,7 @@
     {
       "name": "Flip Faces",
       "bl_idname": "GeometryNodeFlipFaces",
-      "location": [489.285, -89.979],
+      "location": [486.473, -126.564],
       "mute": false,
       "inputs": {
         "Selection": true
@@ -90,7 +90,7 @@
     {
       "name": "Bounding Box",
       "bl_idname": "GeometryNodeBoundBox",
-      "location": [-861.962, -89.302],
+      "location": [-711.945, -315.71],
       "mute": false,
       "inputs": {
         "Use Radius": false
@@ -100,7 +100,7 @@
     {
       "name": "Separate XYZ",
       "bl_idname": "ShaderNodeSeparateXYZ",
-      "location": [-501.673, -77.089],
+      "location": [-362.747, -321.268],
       "mute": false,
       "inputs": {},
       "outputs": {}
@@ -108,28 +108,15 @@
     {
       "name": "Combine XYZ",
       "bl_idname": "ShaderNodeCombineXYZ",
-      "location": [109.66, -107.596],
+      "location": [106.848, -144.181],
       "mute": false,
       "inputs": {},
       "outputs": {}
     },
     {
-      "name": "Math.001",
-      "bl_idname": "ShaderNodeMath",
-      "location": [-317.199, -370.791],
-      "mute": false,
-      "operation": "MULTIPLY",
-      "use_clamp": false,
-      "inputs": {
-        "Value_001": 2.0,
-        "Value_002": 0.5
-      },
-      "outputs": {}
-    },
-    {
       "name": "Vector Math",
       "bl_idname": "ShaderNodeVectorMath",
-      "location": [-680.27, -33.031],
+      "location": [-532.701, -313.083],
       "mute": false,
       "operation": "SUBTRACT",
       "inputs": {
@@ -141,65 +128,30 @@
       }
     },
     {
-      "name": "Math.002",
-      "bl_idname": "ShaderNodeMath",
-      "location": [-312.819, -22.98],
+      "name": "Group",
+      "bl_idname": "GeometryNodeGroup",
+      "location": [-74.058, -74.484],
       "mute": false,
-      "operation": "MULTIPLY",
-      "use_clamp": false,
-      "inputs": {
-        "Value_001": 2.0,
-        "Value_002": 0.5
-      },
+      "node_tree": "<bpy.types.GeometryNodeTree>Mirror_manifold__axis",
+      "inputs": {},
       "outputs": {}
     },
     {
-      "name": "Math.003",
-      "bl_idname": "ShaderNodeMath",
-      "location": [-317.611, -198.311],
+      "name": "Group.001",
+      "bl_idname": "GeometryNodeGroup",
+      "location": [-76.1, -212.524],
       "mute": false,
-      "operation": "MULTIPLY",
-      "use_clamp": false,
-      "inputs": {
-        "Value_001": 2.0,
-        "Value_002": 0.5
-      },
+      "node_tree": "<bpy.types.GeometryNodeTree>Mirror_manifold__axis",
+      "inputs": {},
       "outputs": {}
     },
     {
-      "name": "Math",
-      "bl_idname": "ShaderNodeMath",
-      "location": [-120.283, -26.521],
+      "name": "Group.002",
+      "bl_idname": "GeometryNodeGroup",
+      "location": [-73.756, -348.554],
       "mute": false,
-      "operation": "MULTIPLY",
-      "use_clamp": false,
-      "inputs": {
-        "Value_002": 0.5
-      },
-      "outputs": {}
-    },
-    {
-      "name": "Math.004",
-      "bl_idname": "ShaderNodeMath",
-      "location": [-120.626, -193.838],
-      "mute": false,
-      "operation": "MULTIPLY",
-      "use_clamp": false,
-      "inputs": {
-        "Value_002": 0.5
-      },
-      "outputs": {}
-    },
-    {
-      "name": "Math.005",
-      "bl_idname": "ShaderNodeMath",
-      "location": [-114.784, -373.387],
-      "mute": false,
-      "operation": "MULTIPLY",
-      "use_clamp": false,
-      "inputs": {
-        "Value_002": 0.5
-      },
+      "node_tree": "<bpy.types.GeometryNodeTree>Mirror_manifold__axis",
+      "inputs": {},
       "outputs": {}
     }
   ],
@@ -247,12 +199,6 @@
       "to_socket": 2
     },
     {
-      "from_node": "Separate XYZ",
-      "to_node": "Math.001",
-      "from_socket": 2,
-      "to_socket": 0
-    },
-    {
       "from_node": "Bounding Box",
       "to_node": "Vector Math",
       "from_socket": 2,
@@ -272,66 +218,54 @@
     },
     {
       "from_node": "Separate XYZ",
-      "to_node": "Math.002",
-      "from_socket": 0,
-      "to_socket": 0
-    },
-    {
-      "from_node": "Separate XYZ",
-      "to_node": "Math.003",
-      "from_socket": 1,
-      "to_socket": 0
-    },
-    {
-      "from_node": "Math.002",
-      "to_node": "Math",
+      "to_node": "Group",
       "from_socket": 0,
       "to_socket": 0
     },
     {
       "from_node": "Group Input",
-      "to_node": "Math",
+      "to_node": "Group",
       "from_socket": 1,
       "to_socket": 1
     },
     {
-      "from_node": "Math",
+      "from_node": "Group",
       "to_node": "Combine XYZ",
       "from_socket": 0,
       "to_socket": 0
     },
     {
-      "from_node": "Math.003",
-      "to_node": "Math.004",
-      "from_socket": 0,
-      "to_socket": 0
-    },
-    {
       "from_node": "Group Input",
-      "to_node": "Math.004",
+      "to_node": "Group.001",
       "from_socket": 2,
       "to_socket": 1
     },
     {
-      "from_node": "Math.004",
+      "from_node": "Separate XYZ",
+      "to_node": "Group.001",
+      "from_socket": 1,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group.001",
       "to_node": "Combine XYZ",
       "from_socket": 0,
       "to_socket": 1
     },
     {
-      "from_node": "Math.001",
-      "to_node": "Math.005",
-      "from_socket": 0,
-      "to_socket": 0
-    },
-    {
       "from_node": "Group Input",
-      "to_node": "Math.005",
+      "to_node": "Group.002",
       "from_socket": 3,
       "to_socket": 1
     },
     {
-      "from_node": "Math.005",
+      "from_node": "Separate XYZ",
+      "to_node": "Group.002",
+      "from_socket": 2,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group.002",
       "to_node": "Combine XYZ",
       "from_socket": 0,
       "to_socket": 2

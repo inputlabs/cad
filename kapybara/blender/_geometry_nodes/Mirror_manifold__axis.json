@@ -1,0 +1,93 @@
+{
+  "bl_idname": "GeometryNodeTree",
+  "interface": [
+    {
+      "name": "Value",
+      "in_out": "OUTPUT",
+      "socket_type": "NodeSocketFloat",
+      "subtype": "NONE"
+    },
+    {
+      "name": "Dimension",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketFloat",
+      "subtype": "NONE"
+    },
+    {
+      "name": "Enabled",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketBool",
+      "subtype": null
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Math.002",
+      "bl_idname": "ShaderNodeMath",
+      "location": [-99.063, 144.052],
+      "mute": false,
+      "operation": "MULTIPLY",
+      "use_clamp": false,
+      "inputs": {
+        "Value_001": 2.0,
+        "Value_002": 0.5
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Math",
+      "bl_idname": "ShaderNodeMath",
+      "location": [100.504, 21.853],
+      "mute": false,
+      "operation": "MULTIPLY",
+      "use_clamp": false,
+      "inputs": {
+        "Value_002": 0.5
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Group Output",
+      "bl_idname": "NodeGroupOutput",
+      "location": [300.504, 32.295],
+      "mute": false,
+      "is_active_output": true,
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Group Input",
+      "bl_idname": "NodeGroupInput",
+      "location": [-299.063, 32.295],
+      "mute": false,
+      "inputs": {},
+      "outputs": {}
+    }
+  ],
+  "links": [
+    {
+      "from_node": "Math.002",
+      "to_node": "Math",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Math.002",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Math",
+      "to_node": "Group Output",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Math",
+      "from_socket": 1,
+      "to_socket": 1
+    }
+  ]
+}

@@ -175,11 +175,7 @@ def create_modifier(log, obj, data):
                 ng_name = value.split('>')[1]
                 ng = get_geometry_node_group(ng_name)
                 log(f'link nodegroup {key} {ng}', 1)
-                if ng:
-                    setattr(modifier, key, ng)
-                else:
-                    log(f"Not found node tree '{value}'", 2)
-                    break
+                setattr(modifier, key, ng)
                 continue
         if key == 'node_values':
             for node_key, node_value in value.__dict__.items():
