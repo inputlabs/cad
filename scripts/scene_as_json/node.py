@@ -112,7 +112,7 @@ def serialize_nodegroup(log, nodegroup):
             if not hasattr(node_input, 'default_value'):
                 continue
             value = serialize_value(node_input.default_value)
-            node_data['inputs'][node_input.name] = value
+            node_data['inputs'][node_input.identifier] = value
         # Outputs.
         node_data['outputs'] = {}
         for node_output in node.outputs:
@@ -121,7 +121,7 @@ def serialize_nodegroup(log, nodegroup):
             if not hasattr(node_output, 'default_value'):
                 continue
             value = serialize_value(node_output.default_value)
-            node_data['outputs'][node_output.name] = value
+            node_data['outputs'][node_output.identifier] = value
         data['nodes'].append(node_data)
     # Visual Connectors.
     data['links'] = []
@@ -140,6 +140,7 @@ def serialize_nodegroup(log, nodegroup):
 def create_nodegroup(log, name, data):
     log(f'create_nodegroup {name}')
     ng = bpy.data.node_groups.new(name=name, type=data.bl_idname)
+    ng.is_modifier = True
     # Recreate interface (in/out parameters).
     for socket_data in data.interface:
         socket = ng.interface.new_socket(
@@ -158,12 +159,12 @@ def create_nodegroup(log, name, data):
             setattr(node, prop_key, prop_value)
         for input_key, input_value in node_data.inputs.__dict__.items():
             for input_instance in node.inputs:
-                if input_instance.name == input_key:
+                if input_instance.identifier == input_key:
                     log(f'set node input {input_key} {input_value}', 1)
                     input_instance.default_value = parse_value(input_value)
         for output_key, output_value in node_data.outputs.__dict__.items():
             for output_instance in node.outputs:
-                if output_instance.name == output_key:
+                if output_instance.identifier == output_key:
                     log(f'set node output {output_key} {output_value}', 1)
                     output_instance.default_value = parse_value(output_value)
     # Recreate links (each cable connector).

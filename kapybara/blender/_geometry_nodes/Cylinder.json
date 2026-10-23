@@ -98,7 +98,8 @@
       "operation": "DIVIDE",
       "use_clamp": false,
       "inputs": {
-        "Value": 0.5
+        "Value_001": 2.0,
+        "Value_002": 0.5
       },
       "outputs": {}
     },
@@ -121,7 +122,7 @@
       "operation": "ADD",
       "use_clamp": false,
       "inputs": {
-        "Value": 0.5
+        "Value_002": 0.5
       },
       "outputs": {}
     },
@@ -186,7 +187,7 @@
       "operation": "MULTIPLY",
       "use_clamp": false,
       "inputs": {
-        "Value": 0.5
+        "Value_002": 0.5
       },
       "outputs": {}
     },

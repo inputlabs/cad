@@ -84,7 +84,8 @@
       "mute": false,
       "operation": "NORMALIZE",
       "inputs": {
-        "Vector": [0.0, 0.0, 0.0],
+        "Vector_001": [0.0, 0.0, 0.0],
+        "Vector_002": [0.0, 0.0, 0.0],
         "Scale": 1.0
       },
       "outputs": {
@@ -98,7 +99,8 @@
       "mute": false,
       "operation": "SCALE",
       "inputs": {
-        "Vector": [0.0, 0.0, 0.0]
+        "Vector_001": [0.0, 0.0, 0.0],
+        "Vector_002": [0.0, 0.0, 0.0]
       },
       "outputs": {
         "Value": 0.0
@@ -111,7 +113,8 @@
       "mute": false,
       "operation": "NORMALIZE",
       "inputs": {
-        "Vector": [0.0, 0.0, 0.0],
+        "Vector_001": [0.0, 0.0, 0.0],
+        "Vector_002": [0.0, 0.0, 0.0],
         "Scale": 1.0
       },
       "outputs": {
@@ -125,7 +128,8 @@
       "mute": false,
       "operation": "SCALE",
       "inputs": {
-        "Vector": [0.0, 0.0, 0.0]
+        "Vector_001": [0.0, 0.0, 0.0],
+        "Vector_002": [0.0, 0.0, 0.0]
       },
       "outputs": {
         "Value": 0.0
@@ -138,7 +142,8 @@
       "mute": false,
       "operation": "NORMALIZE",
       "inputs": {
-        "Vector": [0.0, 0.0, 0.0],
+        "Vector_001": [0.0, 0.0, 0.0],
+        "Vector_002": [0.0, 0.0, 0.0],
         "Scale": 1.0
       },
       "outputs": {
@@ -152,7 +157,8 @@
       "mute": false,
       "operation": "SCALE",
       "inputs": {
-        "Vector": [0.0, 0.0, 0.0]
+        "Vector_001": [0.0, 0.0, 0.0],
+        "Vector_002": [0.0, 0.0, 0.0]
       },
       "outputs": {
         "Value": 0.0

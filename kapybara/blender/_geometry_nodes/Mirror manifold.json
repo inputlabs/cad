@@ -36,7 +36,7 @@
     {
       "name": "Group Input",
       "bl_idname": "NodeGroupInput",
-      "location": [-785.718, 243.417],
+      "location": [-745.221, 296.029],
       "mute": false,
       "inputs": {},
       "outputs": {}
@@ -44,7 +44,7 @@
     {
       "name": "Group Output",
       "bl_idname": "NodeGroupOutput",
-      "location": [857.883, 8.255],
+      "location": [898.38, 60.867],
       "mute": false,
       "is_active_output": true,
       "inputs": {},
@@ -53,7 +53,7 @@
     {
       "name": "Transform Geometry",
       "bl_idname": "GeometryNodeTransform",
-      "location": [262.108, -111.583],
+      "location": [302.605, -58.971],
       "mute": false,
       "inputs": {
         "Mode": "Components",
@@ -65,7 +65,7 @@
     {
       "name": "Mesh Boolean",
       "bl_idname": "GeometryNodeMeshBoolean",
-      "location": [620.527, 84.744],
+      "location": [661.024, 137.356],
       "mute": false,
       "operation": "UNION",
       "solver": "MANIFOLD",
@@ -80,7 +80,7 @@
     {
       "name": "Flip Faces",
       "bl_idname": "GeometryNodeFlipFaces",
-      "location": [448.788, -142.591],
+      "location": [489.285, -89.979],
       "mute": false,
       "inputs": {
         "Selection": true
@@ -90,7 +90,7 @@
     {
       "name": "Bounding Box",
       "bl_idname": "GeometryNodeBoundBox",
-      "location": [-902.459, -141.914],
+      "location": [-861.962, -89.302],
       "mute": false,
       "inputs": {
         "Use Radius": false
@@ -100,7 +100,7 @@
     {
       "name": "Separate XYZ",
       "bl_idname": "ShaderNodeSeparateXYZ",
-      "location": [-542.17, -129.701],
+      "location": [-501.673, -77.089],
       "mute": false,
       "inputs": {},
       "outputs": {}
@@ -108,7 +108,7 @@
     {
       "name": "Combine XYZ",
       "bl_idname": "ShaderNodeCombineXYZ",
-      "location": [69.163, -160.208],
+      "location": [109.66, -107.596],
       "mute": false,
       "inputs": {},
       "outputs": {}
@@ -116,23 +116,24 @@
     {
       "name": "Math.001",
       "bl_idname": "ShaderNodeMath",
-      "location": [-360.98, -262.278],
+      "location": [-317.199, -370.791],
       "mute": false,
       "operation": "MULTIPLY",
       "use_clamp": false,
       "inputs": {
-        "Value": 0.5
+        "Value_001": 2.0,
+        "Value_002": 0.5
       },
       "outputs": {}
     },
     {
       "name": "Vector Math",
       "bl_idname": "ShaderNodeVectorMath",
-      "location": [-720.767, -85.643],
+      "location": [-680.27, -33.031],
       "mute": false,
-      "operation": "ADD",
+      "operation": "SUBTRACT",
       "inputs": {
-        "Vector": [0.0, 0.0, 0.0],
+        "Vector_002": [0.0, 0.0, 0.0],
         "Scale": 1.0
       },
       "outputs": {
@@ -142,60 +143,62 @@
     {
       "name": "Math.002",
       "bl_idname": "ShaderNodeMath",
-      "location": [-360.978, -151.223],
+      "location": [-312.819, -22.98],
       "mute": false,
       "operation": "MULTIPLY",
       "use_clamp": false,
       "inputs": {
-        "Value": 0.5
+        "Value_001": 2.0,
+        "Value_002": 0.5
       },
       "outputs": {}
     },
     {
       "name": "Math.003",
       "bl_idname": "ShaderNodeMath",
-      "location": [-362.486, -207.08],
+      "location": [-317.611, -198.311],
       "mute": false,
       "operation": "MULTIPLY",
       "use_clamp": false,
       "inputs": {
-        "Value": 0.5
+        "Value_001": 2.0,
+        "Value_002": 0.5
       },
       "outputs": {}
     },
     {
       "name": "Math",
       "bl_idname": "ShaderNodeMath",
-      "location": [-153.118, -165.737],
+      "location": [-120.283, -26.521],
       "mute": false,
       "operation": "MULTIPLY",
       "use_clamp": false,
       "inputs": {
-        "Value": 0.5
+        "Value_002": 0.5
       },
       "outputs": {}
     },
     {
       "name": "Math.004",
       "bl_idname": "ShaderNodeMath",
-      "location": [-153.461, -215.76],
+      "location": [-120.626, -193.838],
       "mute": false,
       "operation": "MULTIPLY",
       "use_clamp": false,
       "inputs": {
-        "Value": 0.5
+        "Value_002": 0.5
       },
       "outputs": {}
     },
     {
       "name": "Math.005",
       "bl_idname": "ShaderNodeMath",
-      "location": [-148.714, -264.874],
+      "location": [-114.784, -373.387],
       "mute": false,
       "operation": "MULTIPLY",
       "use_clamp": false,
       "inputs": {
-        "Value": 0.5
+        "Value_002": 0.5
       },
       "outputs": {}
     }
