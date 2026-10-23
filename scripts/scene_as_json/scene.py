@@ -40,7 +40,9 @@ def import_scene(log, folder):
     set_scene()
     json_objects = {}
     # Parse files.
-    for json_path in folder.rglob('*.json'):
+    sorter = lambda x: '__' not in x.name  ## Evaluate filenames with __ first (geonode functions).
+    json_paths = sorted(folder.rglob('*.json'), key=sorter)
+    for json_path in json_paths:
         log(f'Parse {json_path}')
         with json_path.open('r', encoding='utf-8') as json_file:
             data = dict_to_namespace(json.load(json_file))
