@@ -54,7 +54,7 @@
     {
       "name": "Group Input",
       "bl_idname": "NodeGroupInput",
-      "location": [-681.205, -121.538],
+      "location": [-279.91, -121.538],
       "mute": false,
       "inputs": {},
       "outputs": {}
@@ -78,50 +78,46 @@
       "outputs": {}
     },
     {
-      "name": "Cylinder",
-      "bl_idname": "GeometryNodeMeshCylinder",
-      "location": [239.194, -287.038],
+      "name": "Curve Circle",
+      "bl_idname": "GeometryNodeCurvePrimitiveCircle",
+      "location": [302.681, -286.736],
       "mute": false,
-      "fill_type": "NGON",
+      "mode": "RADIUS",
       "inputs": {
-        "Side Segments": 1,
-        "Fill Segments": 1
+        "Point 1": [-1.0, 0.0, 0.0],
+        "Point 2": [0.0, 1.0, 0.0],
+        "Point 3": [1.0, 0.0, 0.0]
       },
       "outputs": {
-        "Top": false,
-        "Side": false,
-        "Bottom": false,
-        "UV Map": [0.0, 0.0, 0.0]
+        "Center": [0.0, 0.0, 0.0]
       }
     },
     {
-      "name": "Transform Geometry",
-      "bl_idname": "GeometryNodeTransform",
-      "location": [464.703, -284.319],
+      "name": "Curve to Mesh",
+      "bl_idname": "GeometryNodeCurveToMesh",
+      "location": [521.624, -265.148],
       "mute": false,
       "inputs": {
-        "Mode": "Components",
-        "Rotation": [0.0, 0.0, 0.0],
-        "Scale": [1.0, 1.0, 1.0]
+        "Scale": 1.0,
+        "Fill Caps": true
       },
       "outputs": {}
     },
     {
-      "name": "Math",
-      "bl_idname": "ShaderNodeMath",
-      "location": [-173.787, -495.049],
+      "name": "Curve Line",
+      "bl_idname": "GeometryNodeCurvePrimitiveLine",
+      "location": [301.559, -427.773],
       "mute": false,
-      "operation": "DIVIDE",
-      "use_clamp": false,
+      "mode": "DIRECTION",
       "inputs": {
-        "Value_002": 0.5
+        "End": [0.0, 0.0, 1.0]
       },
       "outputs": {}
     },
     {
       "name": "Combine XYZ",
       "bl_idname": "ShaderNodeCombineXYZ",
-      "location": [241.911, -583.419],
+      "location": [108.946, -436.31],
       "mute": false,
       "inputs": {
         "X": 0.0,
@@ -132,24 +128,23 @@
     {
       "name": "Switch",
       "bl_idname": "GeometryNodeSwitch",
-      "location": [-340.79, -599.528],
+      "location": [-53.586, -580.225],
       "mute": false,
       "input_type": "FLOAT",
       "inputs": {
-        "False": 2.0,
-        "True": -2.0
+        "False": 1.0,
+        "True": -1.0
       },
       "outputs": {}
     },
     {
-      "name": "Math.001",
-      "bl_idname": "ShaderNodeMath",
-      "location": [-342.121, -420.015],
+      "name": "Combine XYZ.001",
+      "bl_idname": "ShaderNodeCombineXYZ",
+      "location": [111.822, -580.225],
       "mute": false,
-      "operation": "ADD",
-      "use_clamp": false,
       "inputs": {
-        "Value_002": 0.5
+        "X": 0.0,
+        "Y": 0.0
       },
       "outputs": {}
     }
@@ -175,43 +170,49 @@
     },
     {
       "from_node": "Group Input",
-      "to_node": "Cylinder",
+      "to_node": "Curve Circle",
       "from_socket": 1,
       "to_socket": 0
     },
     {
       "from_node": "Group Input",
-      "to_node": "Cylinder",
+      "to_node": "Curve Circle",
       "from_socket": 2,
-      "to_socket": 3
-    },
-    {
-      "from_node": "Group Input",
-      "to_node": "Cylinder",
-      "from_socket": 3,
       "to_socket": 4
     },
     {
-      "from_node": "Cylinder",
-      "to_node": "Transform Geometry",
-      "from_socket": 0,
-      "to_socket": 0
-    },
-    {
-      "from_node": "Transform Geometry",
+      "from_node": "Curve to Mesh",
       "to_node": "Group",
       "from_socket": 0,
       "to_socket": 1
     },
     {
-      "from_node": "Math",
-      "to_node": "Combine XYZ",
+      "from_node": "Group Input",
+      "to_node": "Curve Line",
+      "from_socket": 3,
+      "to_socket": 3
+    },
+    {
+      "from_node": "Curve Line",
+      "to_node": "Curve to Mesh",
       "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Combine XYZ",
+      "from_socket": 4,
       "to_socket": 2
     },
     {
       "from_node": "Combine XYZ",
-      "to_node": "Transform Geometry",
+      "to_node": "Curve Line",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Switch",
+      "to_node": "Combine XYZ.001",
       "from_socket": 0,
       "to_socket": 2
     },
@@ -222,28 +223,16 @@
       "to_socket": 0
     },
     {
-      "from_node": "Switch",
-      "to_node": "Math",
+      "from_node": "Combine XYZ.001",
+      "to_node": "Curve Line",
+      "from_socket": 0,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Curve Circle",
+      "to_node": "Curve to Mesh",
       "from_socket": 0,
       "to_socket": 1
-    },
-    {
-      "from_node": "Group Input",
-      "to_node": "Math.001",
-      "from_socket": 3,
-      "to_socket": 0
-    },
-    {
-      "from_node": "Group Input",
-      "to_node": "Math.001",
-      "from_socket": 4,
-      "to_socket": 1
-    },
-    {
-      "from_node": "Math.001",
-      "to_node": "Math",
-      "from_socket": 0,
-      "to_socket": 0
     }
   ]
 }
