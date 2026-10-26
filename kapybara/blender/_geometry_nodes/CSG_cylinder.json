@@ -38,13 +38,19 @@
       "subtype": "NONE"
     },
     {
+      "name": "Rotate",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketRotation",
+      "subtype": null
+    },
+    {
       "name": "Bool difference",
       "in_out": "INPUT",
       "socket_type": "NodeSocketBool",
       "subtype": null
     },
     {
-      "name": "Invert depth",
+      "name": "Invert direction",
       "in_out": "INPUT",
       "socket_type": "NodeSocketBool",
       "subtype": null
@@ -141,11 +147,10 @@
     {
       "name": "Transform Geometry",
       "bl_idname": "GeometryNodeTransform",
-      "location": [736.015, -259.454],
+      "location": [742.158, 23.285],
       "mute": false,
       "inputs": {
         "Mode": "Components",
-        "Rotation": [0.0, 0.0, 0.0],
         "Scale": [1.0, 1.0, 1.0]
       },
       "outputs": {}
@@ -161,7 +166,7 @@
     {
       "from_node": "Group Input",
       "to_node": "Group",
-      "from_socket": 5,
+      "from_socket": 6,
       "to_socket": 2
     },
     {
@@ -209,7 +214,7 @@
     {
       "from_node": "Group Input",
       "to_node": "Switch",
-      "from_socket": 6,
+      "from_socket": 7,
       "to_socket": 0
     },
     {
@@ -235,6 +240,12 @@
       "to_node": "Transform Geometry",
       "from_socket": 4,
       "to_socket": 2
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Transform Geometry",
+      "from_socket": 5,
+      "to_socket": 3
     }
   ]
 }

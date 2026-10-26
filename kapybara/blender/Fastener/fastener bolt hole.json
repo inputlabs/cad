@@ -13,7 +13,7 @@
         "Circle sides": 32,
         "Radius": 2.35,
         "Depth": 10.0,
-        "Invert depth": true
+        "Invert direction": true
       }
     },
     {
@@ -24,7 +24,7 @@
         "Circle sides": 32,
         "Radius": 1.4,
         "Depth": 34.0,
-        "Invert depth": true
+        "Invert direction": true
       }
     }
   ],

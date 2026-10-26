@@ -1,0 +1,96 @@
+{
+  "bl_idname": "GeometryNodeTree",
+  "interface": [
+    {
+      "name": "Geometry",
+      "in_out": "OUTPUT",
+      "socket_type": "NodeSocketGeometry",
+      "subtype": null
+    },
+    {
+      "name": "Geometry",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketGeometry",
+      "subtype": null
+    },
+    {
+      "name": "Offset",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketVector",
+      "subtype": "NONE"
+    },
+    {
+      "name": "Rotation",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketRotation",
+      "subtype": null
+    },
+    {
+      "name": "Scale",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketVector",
+      "subtype": "NONE"
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Group Input",
+      "bl_idname": "NodeGroupInput",
+      "location": [-340.0, 0.0],
+      "mute": false,
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Group Output",
+      "bl_idname": "NodeGroupOutput",
+      "location": [200.0, 0.0],
+      "mute": false,
+      "is_active_output": true,
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Transform Geometry",
+      "bl_idname": "GeometryNodeTransform",
+      "location": [-49.324, 67.071],
+      "mute": false,
+      "inputs": {
+        "Mode": "Components"
+      },
+      "outputs": {}
+    }
+  ],
+  "links": [
+    {
+      "from_node": "Transform Geometry",
+      "to_node": "Group Output",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Transform Geometry",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Transform Geometry",
+      "from_socket": 1,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Transform Geometry",
+      "from_socket": 2,
+      "to_socket": 3
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Transform Geometry",
+      "from_socket": 3,
+      "to_socket": 4
+    }
+  ]
+}
