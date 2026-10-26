@@ -8,7 +8,7 @@
     {
       "type": "NODES",
       "name": "Wide cylinder",
-      "node_group": "<bpy.types.GeometryNodeTree>Cylinder",
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
       "node_values": {
         "Circle sides": 32,
         "Radius": 2.418,
@@ -18,7 +18,7 @@
     {
       "type": "NODES",
       "name": "Thin cylinder",
-      "node_group": "<bpy.types.GeometryNodeTree>Cylinder",
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
       "node_values": {
         "Circle sides": 32,
         "Radius": 1.31,
