@@ -50,7 +50,7 @@
       "show_in_editmode": false,
       "node_group": "<bpy.types.GeometryNodeTree>Rotate",
       "node_values": {
-        "X": 0.436332
+        "X": 25.0
       }
     }
   ],

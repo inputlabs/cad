@@ -3,7 +3,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 import bpy
-from .common import serialize_value, preformat_json, parse_value
+from .common import serialize_value, preformat_json, parse_value, rad_to_deg, deg_to_rad
 
 IGNORE_NODE_PROPERTIES = [
     'location_absolute',
@@ -29,6 +29,13 @@ IGNORE_NODE_PROPERTIES = [
     'bl_height_min',
     'bl_height_max',
 ]
+
+def is_angle_type(item):
+    if getattr(item, 'socket_type', None) == 'NodeSocketRotation':
+        return True
+    if getattr(item, 'subtype', None) in ['ANGLE', 'EULER']:
+        return True
+    return False
 
 def get_geometry_node_group(name):
     # Try node group already loaded in the project.
@@ -56,15 +63,20 @@ def get_socket_value(modifier, name):
                 if hasattr(inputs, item.identifier):
                     socket_prop = getattr(inputs, item.identifier)
                     if hasattr(socket_prop, 'value'):
-                        return getattr(socket_prop, 'value')
+                        value = getattr(socket_prop, 'value')
                     else:
-                        return getattr(item, 'default_value', None)
+                        value = getattr(item, 'default_value', None)
+                    if is_angle_type(item):
+                        value = rad_to_deg(value)
+                    return value
     raise Exception(f"No socket found with name '{name}'")
 
 def set_socket_value(modifier, name, value):
     for item in modifier.node_group.interface.items_tree:
         if item.item_type == 'SOCKET' and item.in_out == 'INPUT':
             if item.name == name:
+                if is_angle_type(item):
+                    value = deg_to_rad(value)
                 inputs = modifier.properties.inputs
                 if hasattr(inputs, item.identifier):
                     socket_prop = getattr(inputs, item.identifier)

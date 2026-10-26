@@ -1,3 +1,4 @@
+import math
 import mathutils
 import re
 from types import SimpleNamespace
@@ -27,6 +28,16 @@ def dict_to_namespace(d):
     elif isinstance(d, tuple):
         return tuple(dict_to_namespace(item) for item in d)
     return d
+
+def rad_to_deg(value):
+    if isinstance(value, ITERABLE_TYPES):
+        return [round(math.degrees(v), 3) for v in value]
+    return round(math.degrees(value), 3)
+
+def deg_to_rad(value):
+    if isinstance(value, ITERABLE_TYPES):
+        return [math.radians(v) for v in value]
+    return math.radians(value)
 
 def parse_value(value):
     if isinstance(value, str) and 'bpy_types.Object' in value:

@@ -18,8 +18,6 @@
       "node_values": {
         "Shape": "Circle",
         "Count": 4,
-        "Angular Distance": 1.570796,
-        "Sweep Angle": 3.13496,
         "Radius": 2.5
       }
     }
