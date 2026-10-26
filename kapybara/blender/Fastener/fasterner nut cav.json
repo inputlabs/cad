@@ -1,46 +1,44 @@
 {
   "type": "MESH",
-  "location": [0.0, -16.0, 2.0],
+  "location": [0.0, -16.0, -5.0],
   "rotation": [0.0, 0.0, 0.0],
   "scale": [1.0, 1.0, 1.0],
   "hide_viewport": true,
   "modifiers": [
     {
-      "type": "SOLIDIFY",
-      "name": "Solidify",
-      "thickness": 2.5
+      "type": "NODES",
+      "name": "Cavity",
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
+      "node_values": {
+        "Circle sides": 6,
+        "Radius": 3.2,
+        "Depth": 2.5,
+        "Invert direction": true
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "Side opening",
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
+      "node_values": {
+        "Width": 8.6,
+        "Height": 5.54,
+        "Depth": 2.5,
+        "Offset": [-3.2, 0.0, 0.0],
+        "Invert direction": true
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "Rotate",
+      "node_group": "<bpy.types.GeometryNodeTree>Transform",
+      "node_values": {
+        "Rotation": [0.0, 0.0, 0.523599],
+        "Scale": [1.0, 1.0, 1.0]
+      }
     }
   ],
-  "vertices": [
-    [-2.766, -1.597, -7.0],
-    [-2.766, 1.597, -7.0],
-    [-1.306, 1.866, 14.87],
-    [-0.0, 2.262, 14.87],
-    [0.0, -3.194, -7.0],
-    [2.766, -1.597, -7.0],
-    [0.0, 3.194, -7.0],
-    [2.766, 1.597, -7.0],
-    [1.306, 1.866, 14.87],
-    [-3.464, -5.194, -7.0],
-    [-6.23, -3.597, -7.0],
-    [-6.23, -0.403, -7.0]
-  ],
-  "edges": [
-    [6, 7],
-    [5, 7],
-    [4, 5],
-    [0, 4],
-    [1, 6],
-    [0, 1],
-    [10, 9],
-    [10, 11],
-    [11, 1],
-    [0, 10],
-    [9, 4]
-  ],
-  "polygons": [
-    [5, 7, 6, 1, 0, 4],
-    [4, 0, 10, 9],
-    [0, 1, 11, 10]
-  ]
+  "vertices": [],
+  "edges": [],
+  "polygons": []
 }
