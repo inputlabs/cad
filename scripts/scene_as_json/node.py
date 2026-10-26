@@ -100,7 +100,10 @@ def serialize_nodegroup(log, nodegroup):
             parameter['in_out'] = item.in_out
             parameter['socket_type'] = item.socket_type
             parameter['subtype'] = getattr(item, 'subtype', None)
-            # parameter['default_value'] = getattr(item, 'default_value', None)
+            if hasattr(item, 'default_value'):
+                default = serialize_value(item.default_value)
+                if default not in [0, 0.0, [0.0, 0.0, 0.0]]:
+                    parameter['default_value'] = default
             data['interface'].append(parameter)
     # Nodes.
     data['nodes'] = []
@@ -162,6 +165,8 @@ def create_nodegroup(log, name, data):
         )
         if socket_data.subtype:
             socket.subtype = socket_data.subtype
+        if hasattr(socket_data, 'default_value') and hasattr(socket, 'default_value'):
+            socket.default_value = parse_value(socket_data.default_value)
     # Recreate nodes (each box).
     for node_data in data.nodes:
         node = ng.nodes.new(type=node_data.bl_idname)

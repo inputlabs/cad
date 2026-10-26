@@ -29,7 +29,8 @@
       "name": "Scale",
       "in_out": "INPUT",
       "socket_type": "NodeSocketVector",
-      "subtype": "NONE"
+      "subtype": "NONE",
+      "default_value": [1.0, 1.0, 1.0]
     }
   ],
   "nodes": [
