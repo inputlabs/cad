@@ -34,7 +34,7 @@
     {
       "name": "Offset",
       "in_out": "INPUT",
-      "socket_type": "NodeSocketFloat",
+      "socket_type": "NodeSocketVector",
       "subtype": "NONE"
     },
     {
@@ -62,7 +62,7 @@
     {
       "name": "Group Output",
       "bl_idname": "NodeGroupOutput",
-      "location": [885.46, -138.026],
+      "location": [1127.067, -138.026],
       "mute": false,
       "is_active_output": true,
       "inputs": {},
@@ -71,7 +71,7 @@
     {
       "name": "Group",
       "bl_idname": "GeometryNodeGroup",
-      "location": [716.331, -113.527],
+      "location": [957.938, -113.527],
       "mute": false,
       "node_tree": "<bpy.types.GeometryNodeTree>__bool_wtih_parent",
       "inputs": {},
@@ -110,18 +110,8 @@
       "mute": false,
       "mode": "DIRECTION",
       "inputs": {
+        "Start": [0.0, 0.0, 0.0],
         "End": [0.0, 0.0, 1.0]
-      },
-      "outputs": {}
-    },
-    {
-      "name": "Combine XYZ",
-      "bl_idname": "ShaderNodeCombineXYZ",
-      "location": [108.946, -436.31],
-      "mute": false,
-      "inputs": {
-        "X": 0.0,
-        "Y": 0.0
       },
       "outputs": {}
     },
@@ -145,6 +135,18 @@
       "inputs": {
         "X": 0.0,
         "Y": 0.0
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Transform Geometry",
+      "bl_idname": "GeometryNodeTransform",
+      "location": [736.015, -259.454],
+      "mute": false,
+      "inputs": {
+        "Mode": "Components",
+        "Rotation": [0.0, 0.0, 0.0],
+        "Scale": [1.0, 1.0, 1.0]
       },
       "outputs": {}
     }
@@ -181,7 +183,7 @@
       "to_socket": 4
     },
     {
-      "from_node": "Curve to Mesh",
+      "from_node": "Transform Geometry",
       "to_node": "Group",
       "from_socket": 0,
       "to_socket": 1
@@ -195,18 +197,6 @@
     {
       "from_node": "Curve Line",
       "to_node": "Curve to Mesh",
-      "from_socket": 0,
-      "to_socket": 0
-    },
-    {
-      "from_node": "Group Input",
-      "to_node": "Combine XYZ",
-      "from_socket": 4,
-      "to_socket": 2
-    },
-    {
-      "from_node": "Combine XYZ",
-      "to_node": "Curve Line",
       "from_socket": 0,
       "to_socket": 0
     },
@@ -233,6 +223,18 @@
       "to_node": "Curve to Mesh",
       "from_socket": 0,
       "to_socket": 1
+    },
+    {
+      "from_node": "Curve to Mesh",
+      "to_node": "Transform Geometry",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Transform Geometry",
+      "from_socket": 4,
+      "to_socket": 2
     }
   ]
 }
