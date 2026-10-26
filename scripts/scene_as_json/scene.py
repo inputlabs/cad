@@ -1,4 +1,3 @@
-import math
 import mathutils
 import json
 from pathlib import Path
@@ -15,6 +14,17 @@ from .object import (
     create_modifier,
     mesh_to_gltf,
 )
+
+WORKSPACES_TO_REMOVE = [
+    'Layout',
+    'Sculpting',
+    'UV Editing',
+    'Texture Paint',
+    'Shading',
+    'Animation',
+    'Rendering',
+    'Compositing',
+]
 
 def export_scene(log, folder):
     folder = Path(folder)
@@ -37,7 +47,7 @@ def export_scene(log, folder):
 def import_scene(log, folder):
     folder = Path(folder)
     clear_scene()
-    set_scene()
+    set_scene(log)
     json_objects = {}
     # Parse files.
     sorter = lambda x: '__' not in x.name  ## Evaluate filenames with __ first (geonode functions).
@@ -69,6 +79,8 @@ def import_scene(log, folder):
                 for modifier_data in data.modifiers:
                     create_modifier(log, obj, modifier_data)
     sort_collections()
+    bpy.app.timers.register(collapse_all_collections, first_interval=0.1)
+    bpy.app.timers.register(remove_workspaces, first_interval=0.2)
 
 def clear_scene():
     # Delete all objects.
@@ -92,17 +104,17 @@ def clear_scene():
             if block.users == 0:
                 data_type.remove(block)
 
-def set_scene():
+def set_scene(log):
     scene = bpy.context.scene
     scene.unit_settings.system = 'METRIC'
     scene.unit_settings.length_unit = 'MILLIMETERS'
     scene.unit_settings.scale_length = 0.001
     # Set tab.
-    modeling = bpy.data.workspaces.get("Modeling")
     window = bpy.context.window
-    window.workspace = modeling  # Set active.
+    workspace = bpy.data.workspaces.get('Modeling')
+    window.workspace = workspace  # Set active.
     # View settings.
-    for screen in modeling.screens:
+    for screen in workspace.screens:
         for area in screen.areas:
             if area.type == 'VIEW_3D':
                 # Distance and position.
@@ -136,3 +148,18 @@ def sort_collections():
     # Relink sorted.
     for child in sorted_children:
         root.children.link(child)
+
+def collapse_all_collections():
+    window = bpy.context.window
+    for area in window.screen.areas:
+        if area.type == 'OUTLINER':
+            region = next(r for r in area.regions if r.type == 'WINDOW')
+            with bpy.context.temp_override(window=window, area=area, region=region):
+                for _ in range(10):
+                    bpy.ops.outliner.show_one_level(open=False)
+
+def remove_workspaces():
+    for name in WORKSPACES_TO_REMOVE:
+        ws = bpy.data.workspaces.get(name)
+        if ws:
+            bpy.data.batch_remove({ws})
