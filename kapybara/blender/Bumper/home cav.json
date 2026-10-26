@@ -18,25 +18,6 @@
       "width": 0.5,
       "width_pct": 0.5,
       "segments": 3
-    },
-    {
-      "type": "SUBSURF",
-      "name": "Subdivision",
-      "show_viewport": false,
-      "show_in_editmode": false,
-      "levels": 2
-    },
-    {
-      "type": "NODES",
-      "name": "GeometryNodes",
-      "show_viewport": false,
-      "show_render": false,
-      "node_group": "<bpy.types.GeometryNodeTree>Cut node",
-      "bake_target": "DISK",
-      "node_values": {
-        "Top": true,
-        "Buttom": true
-      }
     }
   ],
   "vertices": [

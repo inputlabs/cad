@@ -30,15 +30,6 @@
       "solver": "MANIFOLD"
     },
     {
-      "type": "NODES",
-      "name": "Cut",
-      "show_viewport": false,
-      "node_group": "<bpy.types.GeometryNodeTree>Cut node",
-      "node_values": {
-        "Top": true
-      }
-    },
-    {
       "type": "BOOLEAN",
       "name": "joiner",
       "object": "<_bpy_types.Object>grip joiner hole"
