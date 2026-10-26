@@ -6,18 +6,22 @@
   "hide_viewport": false,
   "modifiers": [
     {
-      "type": "BOOLEAN",
-      "name": "body",
-      "show_render": false,
-      "object": "<_bpy_types.Object>Body",
-      "operation": "UNION",
-      "solver": "MANIFOLD"
+      "type": "NODES",
+      "name": "CSG_cuboid",
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
+      "node_values": {
+        "Width": 100.0,
+        "Height": 250.0,
+        "Depth": 50.0,
+        "Offset": [0.0, 0.0, -1.6],
+        "Invert direction": true
+      }
     },
     {
       "type": "BOOLEAN",
-      "name": "cut",
-      "show_render": false,
-      "object": "<_bpy_types.Object>Body Cut 1",
+      "name": "body",
+      "object": "<_bpy_types.Object>Body",
+      "operation": "INTERSECT",
       "solver": "MANIFOLD"
     },
     {
