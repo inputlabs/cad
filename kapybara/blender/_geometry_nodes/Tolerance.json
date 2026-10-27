@@ -1,0 +1,265 @@
+{
+  "bl_idname": "GeometryNodeTree",
+  "interface": [
+    {
+      "name": "Geometry",
+      "in_out": "OUTPUT",
+      "socket_type": "NodeSocketGeometry",
+      "subtype": null
+    },
+    {
+      "name": "Geometry",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketGeometry",
+      "subtype": null
+    },
+    {
+      "name": "X",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketFloat",
+      "subtype": "NONE"
+    },
+    {
+      "name": "Y",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketFloat",
+      "subtype": "NONE"
+    },
+    {
+      "name": "Z",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketFloat",
+      "subtype": "NONE"
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Group Input",
+      "bl_idname": "NodeGroupInput",
+      "location": [-398.318, 283.482],
+      "mute": false,
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Group Output",
+      "bl_idname": "NodeGroupOutput",
+      "location": [395.67, 248.32],
+      "mute": false,
+      "is_active_output": true,
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Set Position",
+      "bl_idname": "GeometryNodeSetPosition",
+      "location": [216.399, 263.888],
+      "mute": false,
+      "inputs": {
+        "Selection": true,
+        "Position": [0.0, 0.0, 0.0]
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Normal",
+      "bl_idname": "GeometryNodeInputNormal",
+      "location": [-787.568, -144.294],
+      "mute": false,
+      "legacy_corner_normals": false,
+      "inputs": {},
+      "outputs": {
+        "True Normal": [0.0, 0.0, 0.0]
+      }
+    },
+    {
+      "name": "Separate XYZ",
+      "bl_idname": "ShaderNodeSeparateXYZ",
+      "location": [-608.706, -76.682],
+      "mute": false,
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Math",
+      "bl_idname": "ShaderNodeMath",
+      "location": [-397.082, 82.771],
+      "mute": false,
+      "operation": "SIGN",
+      "use_clamp": false,
+      "inputs": {
+        "Value_001": 0.0,
+        "Value_002": 0.5
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Math.001",
+      "bl_idname": "ShaderNodeMath",
+      "location": [-399.734, -96.489],
+      "mute": false,
+      "operation": "SIGN",
+      "use_clamp": false,
+      "inputs": {
+        "Value_001": 0.0,
+        "Value_002": 0.0
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Math.002",
+      "bl_idname": "ShaderNodeMath",
+      "location": [-401.545, -273.163],
+      "mute": false,
+      "operation": "SIGN",
+      "use_clamp": false,
+      "inputs": {
+        "Value_001": 0.0,
+        "Value_002": 0.5
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Math.003",
+      "bl_idname": "ShaderNodeMath",
+      "location": [-188.307, 87.07],
+      "mute": false,
+      "operation": "MULTIPLY",
+      "use_clamp": false,
+      "inputs": {
+        "Value_002": 0.5
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Math.004",
+      "bl_idname": "ShaderNodeMath",
+      "location": [-190.233, -86.236],
+      "mute": false,
+      "operation": "MULTIPLY",
+      "use_clamp": false,
+      "inputs": {
+        "Value_002": 0.5
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Math.005",
+      "bl_idname": "ShaderNodeMath",
+      "location": [-189.26, -257.626],
+      "mute": false,
+      "operation": "MULTIPLY",
+      "use_clamp": false,
+      "inputs": {
+        "Value_002": 0.5
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Combine XYZ",
+      "bl_idname": "ShaderNodeCombineXYZ",
+      "location": [8.366, -87.49],
+      "mute": false,
+      "inputs": {},
+      "outputs": {}
+    }
+  ],
+  "links": [
+    {
+      "from_node": "Group Input",
+      "to_node": "Set Position",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Set Position",
+      "to_node": "Group Output",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Normal",
+      "to_node": "Separate XYZ",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Separate XYZ",
+      "to_node": "Math",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Separate XYZ",
+      "to_node": "Math.001",
+      "from_socket": 1,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Separate XYZ",
+      "to_node": "Math.002",
+      "from_socket": 2,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Math.003",
+      "from_socket": 1,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Math",
+      "to_node": "Math.003",
+      "from_socket": 0,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Math.004",
+      "from_socket": 2,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Math.005",
+      "from_socket": 3,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Math.001",
+      "to_node": "Math.004",
+      "from_socket": 0,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Math.002",
+      "to_node": "Math.005",
+      "from_socket": 0,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Math.003",
+      "to_node": "Combine XYZ",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Math.004",
+      "to_node": "Combine XYZ",
+      "from_socket": 0,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Math.005",
+      "to_node": "Combine XYZ",
+      "from_socket": 0,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Combine XYZ",
+      "to_node": "Set Position",
+      "from_socket": 0,
+      "to_socket": 3
+    }
+  ]
+}

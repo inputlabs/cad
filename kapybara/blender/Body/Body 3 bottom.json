@@ -7,7 +7,7 @@
   "modifiers": [
     {
       "type": "NODES",
-      "name": "CSG_cuboid",
+      "name": "cut",
       "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
       "node_values": {
         "Width": 100.0,
@@ -26,19 +26,19 @@
     },
     {
       "type": "BOOLEAN",
-      "name": "cav marmota",
+      "name": "marmota cav",
       "object": "<_bpy_types.Object>marmota cav",
       "solver": "MANIFOLD"
     },
     {
       "type": "BOOLEAN",
-      "name": "cav triggers",
+      "name": "trigger cav",
       "object": "<_bpy_types.Object>trigger _cav",
       "solver": "MANIFOLD"
     },
     {
       "type": "BOOLEAN",
-      "name": "cav triggers nuts",
+      "name": "trigger nut cav",
       "object": "<_bpy_types.Object>trigger nut cav",
       "solver": "MANIFOLD"
     },
@@ -50,19 +50,19 @@
     },
     {
       "type": "BOOLEAN",
-      "name": "cav bumpers",
+      "name": "bumper cav",
       "object": "<_bpy_types.Object>bumper cav",
       "solver": "MANIFOLD"
     },
     {
       "type": "BOOLEAN",
-      "name": "fastener nut",
+      "name": "fastener nut cav",
       "object": "<_bpy_types.Object>fasterner nut cav",
       "solver": "MANIFOLD"
     },
     {
       "type": "BOOLEAN",
-      "name": "fastener bolt",
+      "name": "fastener bolt hole",
       "object": "<_bpy_types.Object>fastener bolt hole",
       "solver": "MANIFOLD"
     },

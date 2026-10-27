@@ -7,7 +7,7 @@
   "modifiers": [
     {
       "type": "NODES",
-      "name": "CSG_cuboid",
+      "name": "cut",
       "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
       "node_values": {
         "Width": 100.0,
