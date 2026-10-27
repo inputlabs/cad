@@ -15,17 +15,17 @@
     },
     {
       "type": "DISPLACE",
-      "name": "Displace",
+      "name": "Tolerance",
       "mid_level": 0.0,
       "strength": -0.2
     },
     {
       "type": "NODES",
-      "name": "scaleX",
-      "node_group": "<bpy.types.GeometryNodeTree>Scale",
+      "name": "Tolerance X",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>Tolerance",
       "node_values": {
-        "Scale": 0.95,
-        "X": true
+        "X": -0.2
       }
     }
   ],

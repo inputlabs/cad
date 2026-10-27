@@ -15,9 +15,9 @@
     {
       "type": "NODES",
       "name": "offset",
-      "node_group": "<bpy.types.GeometryNodeTree>Offset",
+      "node_group": "<bpy.types.GeometryNodeTree>Transform",
       "node_values": {
-        "Z": 1.5
+        "Offset": [0.0, 0.0, 1.7]
       }
     }
   ],
