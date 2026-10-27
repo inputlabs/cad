@@ -7,8 +7,8 @@
   "modifiers": [
     {
       "type": "BOOLEAN",
-      "name": "base",
-      "object": "<_bpy_types.Object>select base",
+      "name": "common",
+      "object": "<_bpy_types.Object>select common",
       "operation": "UNION",
       "solver": "MANIFOLD"
     },
@@ -16,11 +16,10 @@
       "type": "NODES",
       "name": "tolerance",
       "show_in_editmode": false,
-      "node_group": "<bpy.types.GeometryNodeTree>Tolerance axis",
+      "node_group": "<bpy.types.GeometryNodeTree>Tolerance",
       "node_values": {
-        "X": -0.2,
-        "Y": -0.2,
-        "Z": -0.2
+        "X": -0.15,
+        "Y": -0.15
       }
     },
     {
@@ -30,35 +29,25 @@
       "width": 1.0,
       "width_pct": 1.0,
       "segments": 5,
-      "angle_limit": 0.872665
-    },
-    {
-      "type": "MIRROR",
-      "name": "Mirror",
-      "show_in_editmode": false,
-      "mirror_object": "<_bpy_types.Object>Body mirror"
+      "limit_method": "WEIGHT"
     },
     {
       "type": "NODES",
-      "name": "Array",
-      "show_in_editmode": false,
-      "node_group": "<bpy.types.GeometryNodeTree>Array",
+      "name": "Rotate",
+      "node_group": "<bpy.types.GeometryNodeTree>Transform",
       "node_values": {
-        "Count": 2,
-        "Offset Method": "Offset",
-        "Translation": [0.0, -10.48, 0.0],
-        "Offset": [0.0, 10.0, 0.0]
+        "Rotation": [-4.5, 0.0, 0.0]
       }
     },
     {
       "type": "BOOLEAN",
-      "name": "Boolean",
+      "name": "cut bottom",
       "object": "<_bpy_types.Object>select cut bottom",
       "solver": "MANIFOLD"
     },
     {
       "type": "BOOLEAN",
-      "name": "Boolean.001",
+      "name": "cut top",
       "object": "<_bpy_types.Object>select cut top",
       "operation": "INTERSECT",
       "solver": "MANIFOLD"

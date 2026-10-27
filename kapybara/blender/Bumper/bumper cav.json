@@ -7,8 +7,8 @@
   "modifiers": [
     {
       "type": "BOOLEAN",
-      "name": "base",
-      "object": "<_bpy_types.Object>bumper base",
+      "name": "common",
+      "object": "<_bpy_types.Object>bumper common",
       "operation": "UNION",
       "solver": "MANIFOLD"
     },

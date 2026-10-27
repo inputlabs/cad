@@ -1,0 +1,67 @@
+{
+  "type": "MESH",
+  "location": [-10.5, 16.17, -18.3],
+  "rotation": [0.0, 0.0, 0.0],
+  "scale": [1.0, 1.0, 1.0],
+  "hide_viewport": true,
+  "modifiers": [
+    {
+      "type": "MIRROR",
+      "name": "Mirror"
+    },
+    {
+      "type": "SOLIDIFY",
+      "name": "Solidify",
+      "thickness": 8.6
+    },
+    {
+      "type": "NODES",
+      "name": "Array H",
+      "node_group": "<bpy.types.GeometryNodeTree>Array",
+      "node_values": {
+        "Offset Method": "Offset",
+        "Translation": [10.5, 0.0, 0.0],
+        "Offset": [1.1, 0.0, 0.0]
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "Array V",
+      "node_group": "<bpy.types.GeometryNodeTree>Array",
+      "node_values": {
+        "Count": 2,
+        "Offset Method": "Offset",
+        "Translation": [0.0, -10.5, 0.0],
+        "Offset": [1.1, 0.0, 0.0]
+      }
+    }
+  ],
+  "vertices": [
+    [-4.8, -3.489, 27.656],
+    [-4.3, -3.489, -8.7],
+    [-4.3, -3.489, 10.166],
+    [-4.8, -3.489, 11.166],
+    [0.0, -3.489, 27.656],
+    [0.0, -3.489, -8.7],
+    [0.0, -3.489, 11.166],
+    [0.0, -3.489, 10.166]
+  ],
+  "edges": [
+    [3, 0],
+    [5, 1],
+    [1, 2],
+    [2, 3],
+    [0, 4],
+    [3, 6],
+    [2, 7],
+    [7, 6],
+    [6, 4],
+    [5, 7]
+  ],
+  "polygons": [
+    [3, 2, 7, 6],
+    [0, 3, 6, 4],
+    [2, 1, 5, 7]
+  ],
+  "bevel_weight_edge": [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
