@@ -1,0 +1,340 @@
+{
+  "bl_idname": "GeometryNodeTree",
+  "interface": [
+    {
+      "name": "Output",
+      "in_out": "OUTPUT",
+      "socket_type": "NodeSocketGeometry",
+      "subtype": null
+    },
+    {
+      "name": "Geometry parent",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketGeometry",
+      "subtype": null
+    },
+    {
+      "name": "Curve sketch",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketGeometry",
+      "subtype": null
+    },
+    {
+      "name": "Depth",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketFloat",
+      "subtype": "NONE"
+    },
+    {
+      "name": "Offset",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketVector",
+      "subtype": "NONE"
+    },
+    {
+      "name": "Rotate",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketRotation",
+      "subtype": null
+    },
+    {
+      "name": "Bool difference",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketBool",
+      "subtype": null
+    },
+    {
+      "name": "Invert direction",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketBool",
+      "subtype": null
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Curve to Mesh",
+      "bl_idname": "GeometryNodeCurveToMesh",
+      "location": [-41.814, 51.474],
+      "mute": false,
+      "inputs": {
+        "Scale": 1.0,
+        "Fill Caps": true
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Curve Line",
+      "bl_idname": "GeometryNodeCurvePrimitiveLine",
+      "location": [-278.599, -246.485],
+      "mute": false,
+      "mode": "DIRECTION",
+      "inputs": {
+        "Start": [0.0, 0.0, 0.0],
+        "End": [0.0, 0.0, 1.0]
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Switch",
+      "bl_idname": "GeometryNodeSwitch",
+      "location": [-635.264, -260.562],
+      "mute": false,
+      "input_type": "FLOAT",
+      "inputs": {
+        "False": 1.0,
+        "True": -1.0
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Combine XYZ.001",
+      "bl_idname": "ShaderNodeCombineXYZ",
+      "location": [-454.656, -262.082],
+      "mute": false,
+      "inputs": {
+        "X": 0.0,
+        "Y": 0.0
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Transform Geometry",
+      "bl_idname": "GeometryNodeTransform",
+      "location": [143.76, 189.367],
+      "mute": false,
+      "inputs": {
+        "Mode": "Components",
+        "Scale": [1.0, 1.0, 1.0]
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Switch.001",
+      "bl_idname": "GeometryNodeSwitch",
+      "location": [796.861, 99.207],
+      "mute": false,
+      "input_type": "GEOMETRY",
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Domain Size",
+      "bl_idname": "GeometryNodeAttributeDomainSize",
+      "location": [427.794, 403.101],
+      "mute": false,
+      "component": "MESH",
+      "inputs": {},
+      "outputs": {
+        "Point Count": 0,
+        "Edge Count": 0,
+        "Face Corner Count": 0,
+        "Spline Count": 0,
+        "Instance Count": 0,
+        "Layer Count": 0
+      }
+    },
+    {
+      "name": "Compare",
+      "bl_idname": "FunctionNodeCompare",
+      "location": [621.012, 192.868],
+      "mute": false,
+      "operation": "GREATER_THAN",
+      "data_type": "INT",
+      "mode": "ELEMENT",
+      "inputs": {
+        "B": 0
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Mesh Boolean",
+      "bl_idname": "GeometryNodeMeshBoolean",
+      "location": [433.543, -30.456],
+      "mute": false,
+      "operation": "UNION",
+      "solver": "MANIFOLD",
+      "inputs": {
+        "Self Intersection": false,
+        "Hole Tolerant": false
+      },
+      "outputs": {
+        "Intersecting Edges": false
+      }
+    },
+    {
+      "name": "Mesh Boolean.001",
+      "bl_idname": "GeometryNodeMeshBoolean",
+      "location": [432.285, -203.977],
+      "mute": false,
+      "operation": "DIFFERENCE",
+      "solver": "MANIFOLD",
+      "inputs": {
+        "Self Intersection": false,
+        "Hole Tolerant": false
+      },
+      "outputs": {
+        "Intersecting Edges": false
+      }
+    },
+    {
+      "name": "Switch.002",
+      "bl_idname": "GeometryNodeSwitch",
+      "location": [628.56, -39.372],
+      "mute": false,
+      "input_type": "GEOMETRY",
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Group Output",
+      "bl_idname": "NodeGroupOutput",
+      "location": [996.861, 10.644],
+      "mute": false,
+      "is_active_output": true,
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Group Input",
+      "bl_idname": "NodeGroupInput",
+      "location": [-820.064, 82.113],
+      "mute": false,
+      "inputs": {},
+      "outputs": {}
+    }
+  ],
+  "links": [
+    {
+      "from_node": "Curve Line",
+      "to_node": "Curve to Mesh",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Switch",
+      "to_node": "Combine XYZ.001",
+      "from_socket": 0,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Combine XYZ.001",
+      "to_node": "Curve Line",
+      "from_socket": 0,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Curve to Mesh",
+      "to_node": "Transform Geometry",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Compare",
+      "to_node": "Switch.001",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Domain Size",
+      "to_node": "Compare",
+      "from_socket": 2,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Mesh Boolean",
+      "to_node": "Switch.002",
+      "from_socket": 0,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Mesh Boolean.001",
+      "to_node": "Switch.002",
+      "from_socket": 0,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Switch.002",
+      "to_node": "Switch.001",
+      "from_socket": 0,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Transform Geometry",
+      "to_node": "Switch.001",
+      "from_socket": 0,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Transform Geometry",
+      "to_node": "Mesh Boolean.001",
+      "from_socket": 0,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Transform Geometry",
+      "to_node": "Mesh Boolean",
+      "from_socket": 0,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Transform Geometry",
+      "from_socket": 3,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Switch.001",
+      "to_node": "Group Output",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Curve to Mesh",
+      "from_socket": 1,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Switch.002",
+      "from_socket": 5,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Transform Geometry",
+      "from_socket": 4,
+      "to_socket": 3
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Switch",
+      "from_socket": 6,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Curve Line",
+      "from_socket": 2,
+      "to_socket": 3
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Domain Size",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Mesh Boolean",
+      "from_socket": 0,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Mesh Boolean.001",
+      "from_socket": 0,
+      "to_socket": 0
+    }
+  ]
+}

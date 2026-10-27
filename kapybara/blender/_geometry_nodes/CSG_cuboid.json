@@ -60,7 +60,7 @@
     {
       "name": "Group Input",
       "bl_idname": "NodeGroupInput",
-      "location": [-279.91, -121.538],
+      "location": [-232.88, -6.066],
       "mute": false,
       "inputs": {},
       "outputs": {}
@@ -68,82 +68,16 @@
     {
       "name": "Group Output",
       "bl_idname": "NodeGroupOutput",
-      "location": [1127.067, -138.026],
+      "location": [560.153, -5.414],
       "mute": false,
       "is_active_output": true,
       "inputs": {},
       "outputs": {}
     },
     {
-      "name": "Group",
-      "bl_idname": "GeometryNodeGroup",
-      "location": [957.938, -113.527],
-      "mute": false,
-      "node_tree": "<bpy.types.GeometryNodeTree>__bool_wtih_parent",
-      "inputs": {},
-      "outputs": {}
-    },
-    {
-      "name": "Curve to Mesh",
-      "bl_idname": "GeometryNodeCurveToMesh",
-      "location": [521.624, -265.148],
-      "mute": false,
-      "inputs": {
-        "Scale": 1.0,
-        "Fill Caps": true
-      },
-      "outputs": {}
-    },
-    {
-      "name": "Curve Line",
-      "bl_idname": "GeometryNodeCurvePrimitiveLine",
-      "location": [301.559, -427.773],
-      "mute": false,
-      "mode": "DIRECTION",
-      "inputs": {
-        "Start": [0.0, 0.0, 0.0],
-        "End": [0.0, 0.0, 1.0]
-      },
-      "outputs": {}
-    },
-    {
-      "name": "Switch",
-      "bl_idname": "GeometryNodeSwitch",
-      "location": [-53.586, -580.225],
-      "mute": false,
-      "input_type": "FLOAT",
-      "inputs": {
-        "False": 1.0,
-        "True": -1.0
-      },
-      "outputs": {}
-    },
-    {
-      "name": "Combine XYZ.001",
-      "bl_idname": "ShaderNodeCombineXYZ",
-      "location": [111.822, -580.225],
-      "mute": false,
-      "inputs": {
-        "X": 0.0,
-        "Y": 0.0
-      },
-      "outputs": {}
-    },
-    {
-      "name": "Transform Geometry",
-      "bl_idname": "GeometryNodeTransform",
-      "location": [742.158, 23.285],
-      "mute": false,
-      "inputs": {
-        "Mode": "Components",
-        "Scale": [1.0, 1.0, 1.0]
-      },
-      "outputs": {}
-    },
-    {
       "name": "Quadrilateral",
       "bl_idname": "GeometryNodeCurvePrimitiveQuadrilateral",
-      "location": [302.222, -275.25],
+      "location": [75.119, 114.46],
       "mute": false,
       "mode": "RECTANGLE",
       "inputs": {
@@ -158,81 +92,18 @@
         "Point 4": [-1.0, 1.0, 0.0]
       },
       "outputs": {}
+    },
+    {
+      "name": "__CSG",
+      "bl_idname": "GeometryNodeGroup",
+      "location": [348.254, 7.174],
+      "mute": false,
+      "node_tree": "<bpy.types.GeometryNodeTree>__CSG",
+      "inputs": {},
+      "outputs": {}
     }
   ],
   "links": [
-    {
-      "from_node": "Group Input",
-      "to_node": "Group",
-      "from_socket": 0,
-      "to_socket": 0
-    },
-    {
-      "from_node": "Group Input",
-      "to_node": "Group",
-      "from_socket": 6,
-      "to_socket": 2
-    },
-    {
-      "from_node": "Group",
-      "to_node": "Group Output",
-      "from_socket": 0,
-      "to_socket": 0
-    },
-    {
-      "from_node": "Transform Geometry",
-      "to_node": "Group",
-      "from_socket": 0,
-      "to_socket": 1
-    },
-    {
-      "from_node": "Group Input",
-      "to_node": "Curve Line",
-      "from_socket": 3,
-      "to_socket": 3
-    },
-    {
-      "from_node": "Curve Line",
-      "to_node": "Curve to Mesh",
-      "from_socket": 0,
-      "to_socket": 0
-    },
-    {
-      "from_node": "Switch",
-      "to_node": "Combine XYZ.001",
-      "from_socket": 0,
-      "to_socket": 2
-    },
-    {
-      "from_node": "Group Input",
-      "to_node": "Switch",
-      "from_socket": 7,
-      "to_socket": 0
-    },
-    {
-      "from_node": "Combine XYZ.001",
-      "to_node": "Curve Line",
-      "from_socket": 0,
-      "to_socket": 2
-    },
-    {
-      "from_node": "Curve to Mesh",
-      "to_node": "Transform Geometry",
-      "from_socket": 0,
-      "to_socket": 0
-    },
-    {
-      "from_node": "Group Input",
-      "to_node": "Transform Geometry",
-      "from_socket": 4,
-      "to_socket": 2
-    },
-    {
-      "from_node": "Group Input",
-      "to_node": "Transform Geometry",
-      "from_socket": 5,
-      "to_socket": 3
-    },
     {
       "from_node": "Group Input",
       "to_node": "Quadrilateral",
@@ -246,10 +117,52 @@
       "to_socket": 0
     },
     {
+      "from_node": "__CSG",
+      "to_node": "Group Output",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
       "from_node": "Quadrilateral",
-      "to_node": "Curve to Mesh",
+      "to_node": "__CSG",
       "from_socket": 0,
       "to_socket": 1
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "__CSG",
+      "from_socket": 3,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "__CSG",
+      "from_socket": 7,
+      "to_socket": 6
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "__CSG",
+      "from_socket": 6,
+      "to_socket": 5
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "__CSG",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "__CSG",
+      "from_socket": 4,
+      "to_socket": 3
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "__CSG",
+      "from_socket": 5,
+      "to_socket": 4
     }
   ]
 }
