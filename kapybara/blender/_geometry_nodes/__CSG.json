@@ -201,6 +201,18 @@
       "mute": false,
       "inputs": {},
       "outputs": {}
+    },
+    {
+      "name": "Set Shade Smooth",
+      "bl_idname": "GeometryNodeSetShadeSmooth",
+      "location": [958.785, 83.903],
+      "mute": false,
+      "domain": "FACE",
+      "inputs": {
+        "Selection": true,
+        "Shade Smooth": false
+      },
+      "outputs": {}
     }
   ],
   "links": [
@@ -283,7 +295,7 @@
       "to_socket": 2
     },
     {
-      "from_node": "Switch.001",
+      "from_node": "Set Shade Smooth",
       "to_node": "Group Output",
       "from_socket": 0,
       "to_socket": 0
@@ -333,6 +345,12 @@
     {
       "from_node": "Group Input",
       "to_node": "Mesh Boolean.001",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Switch.001",
+      "to_node": "Set Shade Smooth",
       "from_socket": 0,
       "to_socket": 0
     }
