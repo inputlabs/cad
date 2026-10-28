@@ -8,6 +8,7 @@
     {
       "type": "SOLIDIFY",
       "name": "Solidify",
+      "show_in_editmode": false,
       "thickness": 8.2,
       "offset": 0.0,
       "use_even_offset": true
@@ -15,6 +16,7 @@
     {
       "type": "MIRROR",
       "name": "Mirror",
+      "show_in_editmode": false,
       "mirror_object": "<_bpy_types.Object>Body mirror"
     }
   ],

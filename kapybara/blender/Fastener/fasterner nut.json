@@ -2,8 +2,8 @@
   "type": "MESH",
   "location": [0.0, -16.0, -7.2],
   "rotation": [0.0, 0.0, 0.0],
-  "scale": [1.33, 1.33, 1.0],
-  "hide_viewport": true,
+  "scale": [1.0, 1.0, 1.0],
+  "hide_viewport": false,
   "modifiers": [
     {
       "type": "NODES",
@@ -11,7 +11,7 @@
       "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
       "node_values": {
         "Circle sides": 6,
-        "Radius": 2.14,
+        "Radius": 2.8,
         "Depth": 1.9,
         "Rotate": [0.0, 0.0, 30.0]
       }

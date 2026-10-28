@@ -8,12 +8,14 @@
     {
       "type": "SOLIDIFY",
       "name": "Solidify",
+      "show_in_editmode": false,
       "thickness": 8.0,
       "offset": 0.0
     },
     {
       "type": "MIRROR",
       "name": "Mirror",
+      "show_in_editmode": false,
       "mirror_object": "<_bpy_types.Object>Body"
     },
     {
@@ -25,7 +27,7 @@
     },
     {
       "type": "BOOLEAN",
-      "name": "Boolean",
+      "name": "hole",
       "object": "<_bpy_types.Object>trigger bolt hole",
       "solver": "MANIFOLD"
     }
@@ -65,12 +67,10 @@
     [9, 12],
     [14, 13],
     [8, 14],
-    [12, 14],
     [11, 15],
     [15, 16]
   ],
   "polygons": [
-    [12, 14, 13, 9],
-    [14, 12, 6, 11, 15, 16, 7, 10, 2, 0, 1, 3, 4, 5, 8]
+    [2, 0, 1, 3, 4, 5, 8, 14, 13, 9, 12, 6, 11, 15, 16, 7, 10]
   ]
 }

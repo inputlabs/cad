@@ -8,6 +8,7 @@
     {
       "type": "NODES",
       "name": "Wide cylinder",
+      "show_in_editmode": false,
       "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
       "node_values": {
         "Circle sides": 32,
@@ -18,6 +19,7 @@
     {
       "type": "NODES",
       "name": "Thin cylinder",
+      "show_in_editmode": false,
       "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
       "node_values": {
         "Circle sides": 32,
@@ -28,6 +30,7 @@
     {
       "type": "NODES",
       "name": "Mirror",
+      "show_in_editmode": false,
       "node_group": "<bpy.types.GeometryNodeTree>Mirror_manifold",
       "node_values": {
         "Z": true

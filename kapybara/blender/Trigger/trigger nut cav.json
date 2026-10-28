@@ -8,6 +8,7 @@
     {
       "type": "SOLIDIFY",
       "name": "Solidify",
+      "show_in_editmode": false,
       "thickness": 3.2,
       "offset": 0.0
     }
