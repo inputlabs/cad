@@ -1,0 +1,22 @@
+{
+  "type": "MESH",
+  "location": [3.375, -1.564, 15.554],
+  "rotation": [0.0, -90.0, 0.0],
+  "scale": [1.0, 1.0, 1.0],
+  "hide_viewport": false,
+  "modifiers": [
+    {
+      "type": "NODES",
+      "name": "CSG_cylinder",
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
+      "node_values": {
+        "Circle sides": 32,
+        "Radius": 4.5,
+        "Depth": 2.25
+      }
+    }
+  ],
+  "vertices": [],
+  "edges": [],
+  "polygons": []
+}

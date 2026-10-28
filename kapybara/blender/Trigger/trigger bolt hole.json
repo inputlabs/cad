@@ -33,7 +33,8 @@
       "show_in_editmode": false,
       "node_group": "<bpy.types.GeometryNodeTree>Mirror_manifold",
       "node_values": {
-        "Z": true
+        "Z": true,
+        "Invert": true
       }
     }
   ],

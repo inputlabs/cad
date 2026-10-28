@@ -1,0 +1,173 @@
+{
+  "bl_idname": "GeometryNodeTree",
+  "interface": [
+    {
+      "name": "Geometry",
+      "in_out": "OUTPUT",
+      "socket_type": "NodeSocketGeometry",
+      "subtype": null
+    },
+    {
+      "name": "Geometry",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketGeometry",
+      "subtype": null
+    },
+    {
+      "name": "Star sides",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketInt",
+      "subtype": "NONE"
+    },
+    {
+      "name": "Radius outer",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketFloat",
+      "subtype": "NONE"
+    },
+    {
+      "name": "Radius inner",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketFloat",
+      "subtype": "NONE"
+    },
+    {
+      "name": "Depth",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketFloat",
+      "subtype": "NONE"
+    },
+    {
+      "name": "Offset",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketVector",
+      "subtype": "NONE"
+    },
+    {
+      "name": "Rotate",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketRotation",
+      "subtype": null
+    },
+    {
+      "name": "Bool difference",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketBool",
+      "subtype": null
+    },
+    {
+      "name": "Invert direction",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketBool",
+      "subtype": null
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Group Input",
+      "bl_idname": "NodeGroupInput",
+      "location": [-474.228, 165.371],
+      "mute": false,
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Group Output",
+      "bl_idname": "NodeGroupOutput",
+      "location": [218.637, 161.083],
+      "mute": false,
+      "is_active_output": true,
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Group",
+      "bl_idname": "GeometryNodeGroup",
+      "location": [18.931, 170.196],
+      "mute": false,
+      "node_tree": "<bpy.types.GeometryNodeTree>__CSG",
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Star",
+      "bl_idname": "GeometryNodeCurveStar",
+      "location": [-206.258, 325.662],
+      "mute": false,
+      "inputs": {
+        "Twist": 0.0
+      },
+      "outputs": {
+        "Outer Points": false
+      }
+    }
+  ],
+  "links": [
+    {
+      "from_node": "Group Input",
+      "to_node": "Group",
+      "from_socket": 4,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Group",
+      "from_socket": 8,
+      "to_socket": 6
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Group",
+      "from_socket": 5,
+      "to_socket": 3
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Group",
+      "from_socket": 6,
+      "to_socket": 4
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Group",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Group",
+      "from_socket": 7,
+      "to_socket": 5
+    },
+    {
+      "from_node": "Group",
+      "to_node": "Group Output",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Star",
+      "from_socket": 3,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Star",
+      "from_socket": 2,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Star",
+      "from_socket": 1,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Star",
+      "to_node": "Group",
+      "from_socket": 0,
+      "to_socket": 1
+    }
+  ]
+}

@@ -30,13 +30,19 @@
       "in_out": "INPUT",
       "socket_type": "NodeSocketBool",
       "subtype": null
+    },
+    {
+      "name": "Invert",
+      "in_out": "INPUT",
+      "socket_type": "NodeSocketBool",
+      "subtype": null
     }
   ],
   "nodes": [
     {
       "name": "Group Input",
       "bl_idname": "NodeGroupInput",
-      "location": [-616.154, 257.795],
+      "location": [-941.078, 77.842],
       "mute": false,
       "inputs": {},
       "outputs": {}
@@ -44,7 +50,7 @@
     {
       "name": "Group Output",
       "bl_idname": "NodeGroupOutput",
-      "location": [895.568, 24.282],
+      "location": [1083.91, 22.503],
       "mute": false,
       "is_active_output": true,
       "inputs": {},
@@ -53,19 +59,18 @@
     {
       "name": "Transform Geometry",
       "bl_idname": "GeometryNodeTransform",
-      "location": [299.793, -95.556],
+      "location": [485.32, 280.042],
       "mute": false,
       "inputs": {
         "Mode": "Components",
-        "Rotation": [0.0, 0.0, 0.0],
-        "Scale": [1.0, 1.0, -1.0]
+        "Rotation": [0.0, 0.0, 0.0]
       },
       "outputs": {}
     },
     {
       "name": "Mesh Boolean",
       "bl_idname": "GeometryNodeMeshBoolean",
-      "location": [658.212, 100.771],
+      "location": [846.553, 98.993],
       "mute": false,
       "operation": "UNION",
       "solver": "MANIFOLD",
@@ -80,7 +85,7 @@
     {
       "name": "Flip Faces",
       "bl_idname": "GeometryNodeFlipFaces",
-      "location": [486.473, -126.564],
+      "location": [684.665, 81.463],
       "mute": false,
       "inputs": {
         "Selection": true
@@ -153,6 +158,61 @@
       "node_tree": "<bpy.types.GeometryNodeTree>Mirror_manifold__axis",
       "inputs": {},
       "outputs": {}
+    },
+    {
+      "name": "Switch",
+      "bl_idname": "GeometryNodeSwitch",
+      "location": [-80.583, -502.068],
+      "mute": false,
+      "input_type": "FLOAT",
+      "inputs": {
+        "False": 1.0,
+        "True": -1.0
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Switch.001",
+      "bl_idname": "GeometryNodeSwitch",
+      "location": [-80.583, -659.227],
+      "mute": false,
+      "input_type": "FLOAT",
+      "inputs": {
+        "False": 1.0,
+        "True": -1.0
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Switch.002",
+      "bl_idname": "GeometryNodeSwitch",
+      "location": [-82.981, -821.184],
+      "mute": false,
+      "input_type": "FLOAT",
+      "inputs": {
+        "False": 1.0,
+        "True": -1.0
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Combine XYZ.001",
+      "bl_idname": "ShaderNodeCombineXYZ",
+      "location": [129.258, -628.606],
+      "mute": false,
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Switch.003",
+      "bl_idname": "GeometryNodeSwitch",
+      "location": [287.029, 217.194],
+      "mute": false,
+      "input_type": "VECTOR",
+      "inputs": {
+        "False": [0.0, 0.0, 0.0]
+      },
+      "outputs": {}
     }
   ],
   "links": [
@@ -191,12 +251,6 @@
       "to_node": "Group Output",
       "from_socket": 0,
       "to_socket": 0
-    },
-    {
-      "from_node": "Combine XYZ",
-      "to_node": "Transform Geometry",
-      "from_socket": 0,
-      "to_socket": 2
     },
     {
       "from_node": "Bounding Box",
@@ -267,6 +321,66 @@
     {
       "from_node": "Group.002",
       "to_node": "Combine XYZ",
+      "from_socket": 0,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Switch",
+      "from_socket": 1,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Switch.001",
+      "from_socket": 2,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Switch.002",
+      "from_socket": 3,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Switch",
+      "to_node": "Combine XYZ.001",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Switch.001",
+      "to_node": "Combine XYZ.001",
+      "from_socket": 0,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Switch.002",
+      "to_node": "Combine XYZ.001",
+      "from_socket": 0,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Combine XYZ.001",
+      "to_node": "Transform Geometry",
+      "from_socket": 0,
+      "to_socket": 4
+    },
+    {
+      "from_node": "Combine XYZ",
+      "to_node": "Switch.003",
+      "from_socket": 0,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Switch.003",
+      "from_socket": 4,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Switch.003",
+      "to_node": "Transform Geometry",
       "from_socket": 0,
       "to_socket": 2
     }
