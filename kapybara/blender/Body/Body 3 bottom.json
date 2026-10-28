@@ -14,7 +14,7 @@
         "Height": 250.0,
         "Depth": 50.0,
         "Offset": [0.0, 0.0, -1.6],
-        "Invert direction": true
+        "Center": -1.0
       }
     },
     {

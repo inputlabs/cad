@@ -13,7 +13,7 @@
         "Width": 100.0,
         "Height": 250.0,
         "Depth": 1.6,
-        "Invert direction": true
+        "Center": -1.0
       }
     },
     {

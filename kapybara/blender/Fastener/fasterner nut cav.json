@@ -13,7 +13,7 @@
         "Circle sides": 6,
         "Radius": 3.2,
         "Depth": 2.5,
-        "Invert direction": true
+        "Center": -1.0
       }
     },
     {
@@ -25,7 +25,7 @@
         "Height": 5.54,
         "Depth": 2.5,
         "Offset": [-3.2, 0.0, 0.0],
-        "Invert direction": true
+        "Center": -1.0
       }
     },
     {

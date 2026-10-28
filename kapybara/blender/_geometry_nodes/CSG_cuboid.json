@@ -44,13 +44,14 @@
       "subtype": null
     },
     {
-      "name": "Bool difference",
+      "name": "Center",
       "in_out": "INPUT",
-      "socket_type": "NodeSocketBool",
-      "subtype": null
+      "socket_type": "NodeSocketFloat",
+      "subtype": "NONE",
+      "default_value": 1.0
     },
     {
-      "name": "Invert direction",
+      "name": "Bool difference",
       "in_out": "INPUT",
       "socket_type": "NodeSocketBool",
       "subtype": null
@@ -137,14 +138,14 @@
     {
       "from_node": "Group Input",
       "to_node": "__CSG",
-      "from_socket": 7,
-      "to_socket": 6
+      "from_socket": 6,
+      "to_socket": 5
     },
     {
       "from_node": "Group Input",
       "to_node": "__CSG",
-      "from_socket": 6,
-      "to_socket": 5
+      "from_socket": 7,
+      "to_socket": 6
     },
     {
       "from_node": "Group Input",

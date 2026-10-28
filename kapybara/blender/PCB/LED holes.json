@@ -14,7 +14,7 @@
         "Circle sides": 32,
         "Radius": 0.85,
         "Depth": 20.0,
-        "Invert direction": true
+        "Center": -1.0
       }
     },
     {
