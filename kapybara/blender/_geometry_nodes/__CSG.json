@@ -55,7 +55,7 @@
     {
       "name": "Curve to Mesh",
       "bl_idname": "GeometryNodeCurveToMesh",
-      "location": [-41.814, 51.474],
+      "location": [-285.505, 390.798],
       "mute": false,
       "inputs": {
         "Scale": 1.0,
@@ -66,7 +66,7 @@
     {
       "name": "Curve Line",
       "bl_idname": "GeometryNodeCurvePrimitiveLine",
-      "location": [-355.332, -127.954],
+      "location": [-453.119, 378.314],
       "mute": false,
       "mode": "DIRECTION",
       "inputs": {
@@ -79,7 +79,7 @@
     {
       "name": "Transform Geometry",
       "bl_idname": "GeometryNodeTransform",
-      "location": [143.76, 189.367],
+      "location": [194.982, 159.861],
       "mute": false,
       "inputs": {
         "Mode": "Components",
@@ -176,7 +176,7 @@
     {
       "name": "Group Input",
       "bl_idname": "NodeGroupInput",
-      "location": [-820.064, 82.113],
+      "location": [-938.029, 46.395],
       "mute": false,
       "inputs": {},
       "outputs": {}
@@ -194,23 +194,9 @@
       "outputs": {}
     },
     {
-      "name": "Vector Math",
-      "bl_idname": "ShaderNodeVectorMath",
-      "location": [-45.398, 336.89],
-      "mute": false,
-      "operation": "ADD",
-      "inputs": {
-        "Vector_002": [0.0, 0.0, 0.0],
-        "Scale": 1.0
-      },
-      "outputs": {
-        "Value": 0.0
-      }
-    },
-    {
       "name": "Math",
       "bl_idname": "ShaderNodeMath",
-      "location": [-552.301, 431.931],
+      "location": [-578.688, -431.52],
       "mute": false,
       "operation": "MULTIPLY",
       "use_clamp": false,
@@ -223,7 +209,7 @@
     {
       "name": "Math.001",
       "bl_idname": "ShaderNodeMath",
-      "location": [-553.527, 265.459],
+      "location": [-579.914, -260.998],
       "mute": false,
       "operation": "ADD",
       "use_clamp": false,
@@ -236,7 +222,7 @@
     {
       "name": "Math.002",
       "bl_idname": "ShaderNodeMath",
-      "location": [-380.684, 363.469],
+      "location": [-400.862, -313.626],
       "mute": false,
       "operation": "MULTIPLY",
       "use_clamp": false,
@@ -248,11 +234,35 @@
     {
       "name": "Combine XYZ",
       "bl_idname": "ShaderNodeCombineXYZ",
-      "location": [-217.968, 369.364],
+      "location": [-238.146, -307.731],
       "mute": false,
       "inputs": {
         "X": 0.0,
         "Y": 0.0
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Transform Geometry.001",
+      "bl_idname": "GeometryNodeTransform",
+      "location": [-42.595, -303.002],
+      "mute": false,
+      "inputs": {
+        "Mode": "Components",
+        "Rotation": [0.0, 0.0, 0.0],
+        "Scale": [1.0, 1.0, 1.0]
+      },
+      "outputs": {}
+    },
+    {
+      "name": "Clamp",
+      "bl_idname": "ShaderNodeClamp",
+      "location": [-741.026, -262.58],
+      "mute": false,
+      "clamp_type": "MINMAX",
+      "inputs": {
+        "Min": -1.0,
+        "Max": 1.0
       },
       "outputs": {}
     }
@@ -261,12 +271,6 @@
     {
       "from_node": "Curve Line",
       "to_node": "Curve to Mesh",
-      "from_socket": 0,
-      "to_socket": 0
-    },
-    {
-      "from_node": "Curve to Mesh",
-      "to_node": "Transform Geometry",
       "from_socket": 0,
       "to_socket": 0
     },
@@ -373,40 +377,10 @@
       "to_socket": 0
     },
     {
-      "from_node": "Vector Math",
-      "to_node": "Transform Geometry",
-      "from_socket": 0,
-      "to_socket": 2
-    },
-    {
-      "from_node": "Group Input",
-      "to_node": "Vector Math",
-      "from_socket": 3,
-      "to_socket": 1
-    },
-    {
       "from_node": "Group Input",
       "to_node": "Math",
       "from_socket": 2,
       "to_socket": 0
-    },
-    {
-      "from_node": "Group Input",
-      "to_node": "Math.001",
-      "from_socket": 5,
-      "to_socket": 0
-    },
-    {
-      "from_node": "Math",
-      "to_node": "Math.002",
-      "from_socket": 0,
-      "to_socket": 0
-    },
-    {
-      "from_node": "Math.001",
-      "to_node": "Math.002",
-      "from_socket": 0,
-      "to_socket": 1
     },
     {
       "from_node": "Math.002",
@@ -415,8 +389,50 @@
       "to_socket": 2
     },
     {
+      "from_node": "Group Input",
+      "to_node": "Transform Geometry",
+      "from_socket": 3,
+      "to_socket": 2
+    },
+    {
       "from_node": "Combine XYZ",
-      "to_node": "Vector Math",
+      "to_node": "Transform Geometry.001",
+      "from_socket": 0,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Curve to Mesh",
+      "to_node": "Transform Geometry.001",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Transform Geometry.001",
+      "to_node": "Transform Geometry",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Clamp",
+      "from_socket": 5,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Clamp",
+      "to_node": "Math.001",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Math",
+      "to_node": "Math.002",
+      "from_socket": 0,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Math.001",
+      "to_node": "Math.002",
       "from_socket": 0,
       "to_socket": 0
     }
