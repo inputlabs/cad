@@ -3,7 +3,7 @@
   "location": [0.0, -1.564, 15.554],
   "rotation": [0.0, 90.0, 0.0],
   "scale": [1.0, 1.0, 1.0],
-  "hide_viewport": false,
+  "hide_viewport": true,
   "modifiers": [
     {
       "type": "NODES",
@@ -14,16 +14,8 @@
         "Star sides": 24,
         "Radius outer": 10.75,
         "Radius inner": 10.25,
-        "Depth": 3.375
-      }
-    },
-    {
-      "type": "NODES",
-      "name": "Mirror_manifold",
-      "show_in_editmode": false,
-      "node_group": "<bpy.types.GeometryNodeTree>Mirror_manifold",
-      "node_values": {
-        "Z": true
+        "Depth": 6.75,
+        "Center": 0.0
       }
     },
     {
@@ -42,10 +34,9 @@
       "node_values": {
         "Circle sides": 128,
         "Radius": 1.65,
-        "Depth": 20.0,
-        "Offset": [0.0, 0.0, 10.0],
-        "Bool difference": true,
-        "Invert direction": true
+        "Depth": 10.0,
+        "Center": 0.0,
+        "Bool difference": true
       }
     }
   ],
