@@ -1,0 +1,148 @@
+{
+  "type": "MESH",
+  "location": [0.0, -1.564, 15.554],
+  "rotation": [0.0, 90.0, 0.0],
+  "scale": [1.0, 1.0, 1.0],
+  "hide_viewport": true,
+  "drivers": [
+    {
+      "expression": "-wheel_depth / 2",
+      "data_path": "modifiers[\"Transform\"].properties.inputs.Socket_2.value",
+      "array_index": 2,
+      "variables": {
+        "wheel_depth": {
+          "object": "<_bpy_types.Object>wheel",
+          "data_path": "modifiers[\"CSG_star\"].properties.inputs.Socket_5.value"
+        }
+      }
+    },
+    {
+      "expression": "shaft_radius / (2/sqrt(3))",
+      "data_path": "modifiers[\"cut\"].properties.inputs.Socket_5.value",
+      "array_index": 0,
+      "variables": {
+        "shaft_radius": {
+          "object": "<_bpy_types.Object>wheel core",
+          "data_path": "modifiers[\"hex shaft\"].properties.inputs.Socket_3.value"
+        }
+      }
+    },
+    {
+      "expression": "value",
+      "data_path": "modifiers[\"main slot\"].properties.inputs.Socket_4.value",
+      "array_index": 0,
+      "variables": {
+        "value": {
+          "object": "<_bpy_types.Object>wheel core",
+          "data_path": "modifiers[\"core\"].properties.inputs.Socket_4.value"
+        }
+      }
+    },
+    {
+      "expression": "value",
+      "data_path": "modifiers[\"diamond\"].properties.inputs.Socket_4.value",
+      "array_index": 0,
+      "variables": {
+        "value": {
+          "object": "<_bpy_types.Object>wheel core",
+          "data_path": "modifiers[\"core\"].properties.inputs.Socket_4.value"
+        }
+      }
+    },
+    {
+      "expression": "core_diameter + 2",
+      "data_path": "modifiers[\"Array\"].properties.inputs.Socket_6.value",
+      "array_index": 0,
+      "variables": {
+        "core_diameter": {
+          "object": "<_bpy_types.Object>wheel core",
+          "data_path": "modifiers[\"core\"].properties.inputs.Socket_3.value"
+        }
+      }
+    }
+  ],
+  "modifiers": [
+    {
+      "type": "NODES",
+      "name": "stoppers",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
+      "node_values": {
+        "Circle sides": 4,
+        "Radius": 2.0,
+        "Depth": 10.0,
+        "Center": 0.0
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "Array",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>Array",
+      "node_values": {
+        "Shape": "Circle",
+        "Count": 4,
+        "Radius": 6.5
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "Rotate",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>Transform",
+      "node_values": {
+        "Rotation": [0.0, 0.0, 45.0]
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "main slot",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
+      "node_values": {
+        "Circle sides": 64,
+        "Radius": 6.0,
+        "Depth": 2.25,
+        "Bool mode": 2
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "cut",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
+      "node_values": {
+        "Width": 20.0,
+        "Height": 20.0,
+        "Depth": 20.0,
+        "Offset": [0.887676, 0.0, 0.0],
+        "Rotate": [0.0, 90.0, 0.0],
+        "Bool mode": 1
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "diamond",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
+      "node_values": {
+        "Width": 6.0,
+        "Height": 6.0,
+        "Depth": 2.25,
+        "Rotate": [0.0, 0.0, 45.0]
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "Transform",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>Transform",
+      "node_values": {
+        "Offset": [0.0, 0.0, -3.375]
+      }
+    }
+  ],
+  "vertices": [],
+  "edges": [],
+  "polygons": []
+}

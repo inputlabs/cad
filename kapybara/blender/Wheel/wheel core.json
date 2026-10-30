@@ -1,6 +1,6 @@
 {
   "type": "MESH",
-  "location": [-3.375, -1.564, 15.554],
+  "location": [0.0, -1.564, 15.554],
   "rotation": [0.0, -90.0, 0.0],
   "scale": [1.0, 1.0, 1.0],
   "hide_viewport": false,
@@ -13,6 +13,17 @@
         "shaft_radius": {
           "object": "<_bpy_types.Object>wheel core",
           "data_path": "modifiers[\"hex shaft\"].properties.inputs.Socket_3.value"
+        }
+      }
+    },
+    {
+      "expression": "wheel_depth / 2",
+      "data_path": "modifiers[\"Transform\"].properties.inputs.Socket_2.value",
+      "array_index": 2,
+      "variables": {
+        "wheel_depth": {
+          "object": "<_bpy_types.Object>wheel",
+          "data_path": "modifiers[\"CSG_star\"].properties.inputs.Socket_5.value"
         }
       }
     }
@@ -54,7 +65,15 @@
         "Offset": [-0.887676, 0.0, 0.0],
         "Rotate": [0.0, 90.0, 0.0],
         "Center": -1.0,
-        "Bool difference": true
+        "Bool mode": 1
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "Transform",
+      "node_group": "<bpy.types.GeometryNodeTree>Transform",
+      "node_values": {
+        "Offset": [0.0, 0.0, 3.375]
       }
     }
   ],

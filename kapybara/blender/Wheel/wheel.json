@@ -3,7 +3,7 @@
   "location": [0.0, -1.564, 15.554],
   "rotation": [0.0, 90.0, 0.0],
   "scale": [1.0, 1.0, 1.0],
-  "hide_viewport": true,
+  "hide_viewport": false,
   "modifiers": [
     {
       "type": "NODES",
@@ -15,7 +15,8 @@
         "Radius outer": 10.75,
         "Radius inner": 10.25,
         "Depth": 6.75,
-        "Center": 0.0
+        "Center": 0.0,
+        "Bool mode": 2
       }
     },
     {
@@ -36,8 +37,20 @@
         "Radius": 1.65,
         "Depth": 10.0,
         "Center": 0.0,
-        "Bool difference": true
+        "Bool mode": 1
       }
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "core cav",
+      "object": "<_bpy_types.Object>wheel core cav",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "core holes",
+      "object": "<_bpy_types.Object>wheel core holes",
+      "solver": "MANIFOLD"
     }
   ],
   "vertices": [],

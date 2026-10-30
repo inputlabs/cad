@@ -2,20 +2,23 @@
   "type": "MESH",
   "location": [0.0, -1.6, 15.6],
   "rotation": [0.0, 0.0, 0.0],
-  "scale": [1.005, 1.0, 1.0],
+  "scale": [1.0, 1.0, 1.0],
   "hide_viewport": true,
   "modifiers": [
     {
       "type": "SOLIDIFY",
       "name": "Solidify",
       "show_in_editmode": false,
-      "thickness": 3.95
+      "thickness": 3.95,
+      "offset": 1.0
     },
     {
-      "type": "MIRROR",
-      "name": "Mirror",
-      "show_in_editmode": false,
-      "mirror_object": "<_bpy_types.Object>Body mirror"
+      "type": "NODES",
+      "name": "Mirror_manifold",
+      "node_group": "<bpy.types.GeometryNodeTree>Mirror_manifold",
+      "node_values": {
+        "X": true
+      }
     },
     {
       "type": "BEVEL",
@@ -27,8 +30,8 @@
     }
   ],
   "vertices": [
-    [0.0, 11.579, -0.0],
-    [0.0, -11.579, -0.0],
+    [0.0, 11.579, 0.0],
+    [0.0, -11.579, 0.0],
     [0.0, -11.356, 2.259],
     [0.0, -10.698, 4.431],
     [0.0, -9.628, 6.433],
