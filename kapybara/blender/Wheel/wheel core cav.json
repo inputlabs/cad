@@ -30,7 +30,6 @@
     {
       "expression": "value",
       "data_path": "modifiers[\"main slot\"].properties.inputs.Socket_4.value",
-      "array_index": 0,
       "variables": {
         "value": {
           "object": "<_bpy_types.Object>wheel core",
@@ -41,7 +40,6 @@
     {
       "expression": "value",
       "data_path": "modifiers[\"diamond\"].properties.inputs.Socket_4.value",
-      "array_index": 0,
       "variables": {
         "value": {
           "object": "<_bpy_types.Object>wheel core",
@@ -52,7 +50,6 @@
     {
       "expression": "core_diameter + 2",
       "data_path": "modifiers[\"Array\"].properties.inputs.Socket_6.value",
-      "array_index": 0,
       "variables": {
         "core_diameter": {
           "object": "<_bpy_types.Object>wheel core",

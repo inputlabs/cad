@@ -5,7 +5,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 import bpy
-from .common import serialize_value, preformat_json, parse_value, get_type_uname
+from .common import serialize_value, preformat_json, parse_value, get_type_uname, ITERABLE_TYPES
 from .node import get_socket_value, get_geometry_node_group, set_socket_value
 
 IGNORE_ATTR = [
@@ -192,10 +192,12 @@ def create_modifier(log, obj, data):
 
 def serialize_driver(log, obj, fcurve):
     log(f'serialize_driver {obj} {fcurve}')
+    override = obj.path_resolve(fcurve.data_path)
     data = {}
     data['expression'] = fcurve.driver.expression
     data['data_path'] = fcurve.data_path
-    data['array_index'] = fcurve.array_index
+    if isinstance(override, ITERABLE_TYPES):
+        data['array_index'] = fcurve.array_index
     data['variables'] = {}
     for variable in fcurve.driver.variables:
         target = variable.targets[0]
@@ -209,6 +211,7 @@ def create_driver(log, obj, driver_data):
     log(f'create_driver {obj}')
     ad = obj.animation_data or obj.animation_data_create()  # TODO CLEAN
     path = driver_data.data_path
+    log(f'path {path}', 1)
     if hasattr(driver_data, 'array_index'):
         index = driver_data.array_index
         fc = obj.driver_add(path, index)

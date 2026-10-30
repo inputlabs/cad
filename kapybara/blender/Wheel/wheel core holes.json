@@ -8,7 +8,6 @@
     {
       "expression": "(wheel_depth / 2) - core_depth",
       "data_path": "modifiers[\"hole\"].properties.inputs.Socket_4.value",
-      "array_index": 0,
       "variables": {
         "wheel_depth": {
           "object": "<_bpy_types.Object>wheel",
