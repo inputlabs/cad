@@ -137,6 +137,7 @@ def serialize_nodegroup(log, nodegroup):
                 continue
             value = serialize_value(node_output.default_value)
             node_data['outputs'][node_output.identifier] = value
+        # Append.
         data['nodes'].append(node_data)
     # Visual Connectors.
     data['links'] = []
@@ -170,6 +171,7 @@ def create_nodegroup(log, name, data):
     # Recreate nodes (each box).
     for node_data in data.nodes:
         node = ng.nodes.new(type=node_data.bl_idname)
+        # Set values.
         for prop_key, prop_value in node_data.__dict__.items():
             if prop_key in ['inputs', 'outputs']:
                 continue
@@ -181,16 +183,22 @@ def create_nodegroup(log, name, data):
                 setattr(node, prop_key, ref_ng)
             else:
                 setattr(node, prop_key, prop_value)
+        # Inputs.
         for input_key, input_value in node_data.inputs.__dict__.items():
             for input_instance in node.inputs:
                 if input_instance.identifier == input_key:
                     log(f'set node input {input_key} {input_value}', 1)
                     input_instance.default_value = parse_value(input_value)
+        # Outputs.
         for output_key, output_value in node_data.outputs.__dict__.items():
             for output_instance in node.outputs:
                 if output_instance.identifier == output_key:
                     log(f'set node output {output_key} {output_value}', 1)
                     output_instance.default_value = parse_value(output_value)
+        # Ensure free slots on Index Switch node.
+        if node.bl_idname == 'GeometryNodeIndexSwitch':
+            while len(node.index_switch_items) < 8:
+                node.index_switch_items.new()
     # Recreate links (each cable connector).
     for link_data in data.links:
         from_node = ng.nodes.get(link_data.from_node)
