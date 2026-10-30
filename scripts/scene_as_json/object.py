@@ -5,7 +5,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 import bpy
-from .common import serialize_value, preformat_json, parse_value
+from .common import serialize_value, preformat_json, parse_value, get_type_uname
 from .node import get_socket_value, get_geometry_node_group, set_socket_value
 
 IGNORE_ATTR = [
@@ -45,7 +45,13 @@ def serialize_object(log, obj):
     data.scale = obj.scale.to_tuple(3)
     data.hide_viewport = obj.hide_get()
     if obj.type == 'MESH':
+        # Drivers.
+        if obj.animation_data:
+            drivers = obj.animation_data.drivers
+            data.drivers = [serialize_driver(log, obj, d) for d in drivers]
+        # Modifiers.
         data.modifiers = [serialize_modifier(log, obj, m) for m in obj.modifiers]
+        # Mesh.
         if len(obj.data.vertices) < 1000:
             data.vertices = [v.co.to_tuple(3) for v in obj.data.vertices]
             data.edges = [list(e.vertices) for e in obj.data.edges]
@@ -183,6 +189,40 @@ def create_modifier(log, obj, data):
                 set_socket_value(modifier, node_key, parse_value(node_value))
             continue
         setattr(modifier, key, value)
+
+def serialize_driver(log, obj, fcurve):
+    log(f'serialize_driver {obj} {fcurve}')
+    data = {}
+    data['expression'] = fcurve.driver.expression
+    data['data_path'] = fcurve.data_path
+    data['array_index'] = fcurve.array_index
+    data['variables'] = {}
+    for variable in fcurve.driver.variables:
+        target = variable.targets[0]
+        data['variables'][variable.name] = {
+            "object": f'<{get_type_uname(target.id)}>{target.id.name}',
+            "data_path": target.data_path,
+        }
+    return data
+
+def create_driver(log, obj, driver_data):
+    log(f'create_driver {obj}')
+    ad = obj.animation_data or obj.animation_data_create()  # TODO CLEAN
+    path = driver_data.data_path
+    if hasattr(driver_data, 'array_index'):
+        index = driver_data.array_index
+        fc = obj.driver_add(path, index)
+    else:
+        fc = obj.driver_add(path)
+    fc.driver.type = 'SCRIPTED'
+    fc.driver.expression = driver_data.expression
+    for name, var_data in driver_data.variables.__dict__.items():
+        var = fc.driver.variables.new()
+        var.name = name
+        target = var.targets[0]
+        target.id_type = 'OBJECT'
+        target.id = get_object_by_ref(var_data.object)
+        target.data_path = var_data.data_path
 
 def mesh_to_gltf(log, obj, filepath):
     log(f'mesh_to_gltf {obj.name} {filepath}')

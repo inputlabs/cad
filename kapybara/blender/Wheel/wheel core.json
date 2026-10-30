@@ -4,6 +4,19 @@
   "rotation": [0.0, -90.0, 0.0],
   "scale": [1.0, 1.0, 1.0],
   "hide_viewport": false,
+  "drivers": [
+    {
+      "expression": "shaft_radius * -(sqrt(3)/2)",
+      "data_path": "modifiers[\"cut\"].properties.inputs.Socket_5.value",
+      "array_index": 0,
+      "variables": {
+        "shaft_radius": {
+          "object": "<_bpy_types.Object>wheel core",
+          "data_path": "modifiers[\"hex shaft\"].properties.inputs.Socket_3.value"
+        }
+      }
+    }
+  ],
   "modifiers": [
     {
       "type": "NODES",

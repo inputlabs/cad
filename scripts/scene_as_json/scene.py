@@ -12,6 +12,7 @@ from .object import (
     serialize_object,
     create_object,
     create_modifier,
+    create_driver,
     mesh_to_gltf,
 )
 
@@ -78,6 +79,15 @@ def import_scene(log, folder):
             if hasattr(data, 'modifiers'):
                 for modifier_data in data.modifiers:
                     create_modifier(log, obj, modifier_data)
+    # Recreate drivers.
+    for data_path, data in json_objects.items():
+        root = data_path.parts[0]
+        name = data_path.parts[-1]
+        if not root.startswith('_'):
+            obj = get_object(name)
+            if hasattr(data, 'drivers'):
+                for driver_data in data.drivers:
+                    create_driver(log, obj, driver_data)
     sort_collections()
     bpy.app.timers.register(collapse_all_collections, first_interval=0.1)
     bpy.app.timers.register(remove_workspaces, first_interval=0.2)
