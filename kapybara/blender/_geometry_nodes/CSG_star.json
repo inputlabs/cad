@@ -57,10 +57,10 @@
       "default_value": 1.0
     },
     {
-      "name": "Bool difference",
+      "name": "Bool mode",
       "in_out": "INPUT",
-      "socket_type": "NodeSocketBool",
-      "subtype": null
+      "socket_type": "NodeSocketInt",
+      "subtype": "NONE"
     }
   ],
   "nodes": [

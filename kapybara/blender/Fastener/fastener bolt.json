@@ -30,7 +30,7 @@
         "Radius": 1.3,
         "Depth": 1.5,
         "Offset": [0.0, 0.0, 1.0],
-        "Bool difference": true
+        "Bool mode": 1
       }
     },
     {

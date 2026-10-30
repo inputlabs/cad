@@ -45,10 +45,10 @@
       "default_value": 1.0
     },
     {
-      "name": "Bool difference",
+      "name": "Bool mode",
       "in_out": "INPUT",
-      "socket_type": "NodeSocketBool",
-      "subtype": null
+      "socket_type": "NodeSocketInt",
+      "subtype": "NONE"
     }
   ],
   "nodes": [
@@ -128,7 +128,7 @@
     {
       "name": "Mesh Boolean",
       "bl_idname": "GeometryNodeMeshBoolean",
-      "location": [433.543, -30.456],
+      "location": [414.708, 43.457],
       "mute": false,
       "operation": "UNION",
       "solver": "MANIFOLD",
@@ -143,7 +143,7 @@
     {
       "name": "Mesh Boolean.001",
       "bl_idname": "GeometryNodeMeshBoolean",
-      "location": [432.285, -203.977],
+      "location": [413.45, -130.064],
       "mute": false,
       "operation": "DIFFERENCE",
       "solver": "MANIFOLD",
@@ -154,15 +154,6 @@
       "outputs": {
         "Intersecting Edges": false
       }
-    },
-    {
-      "name": "Switch.002",
-      "bl_idname": "GeometryNodeSwitch",
-      "location": [628.56, -39.372],
-      "mute": false,
-      "input_type": "GEOMETRY",
-      "inputs": {},
-      "outputs": {}
     },
     {
       "name": "Group Output",
@@ -245,7 +236,7 @@
     {
       "name": "Transform Geometry.001",
       "bl_idname": "GeometryNodeTransform",
-      "location": [-42.595, -303.002],
+      "location": [-46.941, 389.754],
       "mute": false,
       "inputs": {
         "Mode": "Components",
@@ -265,6 +256,45 @@
         "Max": 1.0
       },
       "outputs": {}
+    },
+    {
+      "name": "Mesh Boolean.002",
+      "bl_idname": "GeometryNodeMeshBoolean",
+      "location": [417.579, -481.627],
+      "mute": false,
+      "operation": "INTERSECT",
+      "solver": "MANIFOLD",
+      "inputs": {
+        "Self Intersection": false,
+        "Hole Tolerant": false
+      },
+      "outputs": {
+        "Intersecting Edges": false
+      }
+    },
+    {
+      "name": "Index Switch",
+      "bl_idname": "GeometryNodeIndexSwitch",
+      "location": [618.647, -32.236],
+      "mute": false,
+      "data_type": "GEOMETRY",
+      "inputs": {},
+      "outputs": {}
+    },
+    {
+      "name": "Mesh Boolean.003",
+      "bl_idname": "GeometryNodeMeshBoolean",
+      "location": [414.899, -305.427],
+      "mute": false,
+      "operation": "DIFFERENCE",
+      "solver": "MANIFOLD",
+      "inputs": {
+        "Self Intersection": false,
+        "Hole Tolerant": false
+      },
+      "outputs": {
+        "Intersecting Edges": false
+      }
     }
   ],
   "links": [
@@ -285,24 +315,6 @@
       "to_node": "Compare",
       "from_socket": 2,
       "to_socket": 0
-    },
-    {
-      "from_node": "Mesh Boolean",
-      "to_node": "Switch.002",
-      "from_socket": 0,
-      "to_socket": 1
-    },
-    {
-      "from_node": "Mesh Boolean.001",
-      "to_node": "Switch.002",
-      "from_socket": 0,
-      "to_socket": 2
-    },
-    {
-      "from_node": "Switch.002",
-      "to_node": "Switch.001",
-      "from_socket": 0,
-      "to_socket": 2
     },
     {
       "from_node": "Transform Geometry",
@@ -333,12 +345,6 @@
       "to_node": "Curve to Mesh",
       "from_socket": 1,
       "to_socket": 1
-    },
-    {
-      "from_node": "Group Input",
-      "to_node": "Switch.002",
-      "from_socket": 6,
-      "to_socket": 0
     },
     {
       "from_node": "Group Input",
@@ -435,6 +441,66 @@
       "to_node": "Math.002",
       "from_socket": 0,
       "to_socket": 0
+    },
+    {
+      "from_node": "Mesh Boolean",
+      "to_node": "Index Switch",
+      "from_socket": 0,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Mesh Boolean.001",
+      "to_node": "Index Switch",
+      "from_socket": 0,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Index Switch",
+      "to_node": "Switch.001",
+      "from_socket": 0,
+      "to_socket": 2
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Index Switch",
+      "from_socket": 6,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Mesh Boolean.002",
+      "from_socket": 0,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Transform Geometry",
+      "to_node": "Mesh Boolean.002",
+      "from_socket": 0,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Group Input",
+      "to_node": "Mesh Boolean.003",
+      "from_socket": 0,
+      "to_socket": 1
+    },
+    {
+      "from_node": "Transform Geometry",
+      "to_node": "Mesh Boolean.003",
+      "from_socket": 0,
+      "to_socket": 0
+    },
+    {
+      "from_node": "Mesh Boolean.003",
+      "to_node": "Index Switch",
+      "from_socket": 0,
+      "to_socket": 3
+    },
+    {
+      "from_node": "Mesh Boolean.002",
+      "to_node": "Index Switch",
+      "from_socket": 0,
+      "to_socket": 4
     }
   ]
 }
