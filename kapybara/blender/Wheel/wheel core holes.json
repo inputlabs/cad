@@ -7,7 +7,7 @@
   "drivers": [
     {
       "expression": "(wheel_depth / 2) - core_depth",
-      "data_path": "modifiers[\"hole\"].properties.inputs.Socket_4.value",
+      "data_path": "modifiers[\"small hole\"].properties.inputs.Socket_4.value",
       "variables": {
         "wheel_depth": {
           "object": "<_bpy_types.Object>wheel",
@@ -23,12 +23,12 @@
   "modifiers": [
     {
       "type": "NODES",
-      "name": "hole",
+      "name": "small hole",
       "show_in_editmode": false,
       "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
       "node_values": {
         "Circle sides": 32,
-        "Radius": 0.75,
+        "Radius": 0.7,
         "Depth": 1.125,
         "Center": -1.0
       }
@@ -43,7 +43,7 @@
         "Count": 2,
         "Circle Segment": "Arc",
         "Sweep Angle": 90.0,
-        "Radius": 4.0
+        "Radius": 4.2
       }
     },
     {
@@ -53,6 +53,17 @@
       "node_group": "<bpy.types.GeometryNodeTree>Transform",
       "node_values": {
         "Rotation": [0.0, 0.0, 45.0]
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "center hole",
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
+      "node_values": {
+        "Circle sides": 128,
+        "Radius": 1.65,
+        "Depth": 10.0,
+        "Center": 0.0
       }
     }
   ],

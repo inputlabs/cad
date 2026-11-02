@@ -28,19 +28,6 @@
       "angle_limit": 1.047198
     },
     {
-      "type": "NODES",
-      "name": "hole",
-      "show_in_editmode": false,
-      "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
-      "node_values": {
-        "Circle sides": 128,
-        "Radius": 1.65,
-        "Depth": 10.0,
-        "Center": 0.0,
-        "Bool mode": 1
-      }
-    },
-    {
       "type": "BOOLEAN",
       "name": "core cav",
       "object": "<_bpy_types.Object>wheel core cav",

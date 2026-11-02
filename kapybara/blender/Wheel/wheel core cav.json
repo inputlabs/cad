@@ -48,7 +48,7 @@
       }
     },
     {
-      "expression": "core_diameter + 2",
+      "expression": "core_diameter + 2 - 0.07",
       "data_path": "modifiers[\"Array\"].properties.inputs.Socket_6.value",
       "variables": {
         "core_diameter": {
@@ -79,7 +79,7 @@
       "node_values": {
         "Shape": "Circle",
         "Count": 4,
-        "Radius": 6.5
+        "Radius": 6.43
       }
     },
     {
