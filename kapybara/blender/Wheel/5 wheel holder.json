@@ -1,0 +1,97 @@
+{
+  "type": "MESH",
+  "location": [0.0, -1.564, 15.554],
+  "rotation": [0.0, 90.0, 0.0],
+  "scale": [1.0, 1.0, 1.0],
+  "hide_viewport": false,
+  "modifiers": [
+    {
+      "type": "NODES",
+      "name": "cut corner",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
+      "node_values": {
+        "Width": 12.8,
+        "Height": 4.0,
+        "Depth": 20.0,
+        "Offset": [-3.0, -7.0, 0.0],
+        "Rotate": [0.0, 0.0, -45.0],
+        "Center": 0.0
+      }
+    },
+    {
+      "type": "MIRROR",
+      "name": "Mirror",
+      "show_in_editmode": false,
+      "use_axis": [
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "type": "NODES",
+      "name": "main",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
+      "node_values": {
+        "Width": 14.0,
+        "Height": 20.0,
+        "Depth": 4.0,
+        "Offset": [5.54, 0.0, 0.0],
+        "Rotate": [0.0, 0.0, 90.0],
+        "Bool mode": 2
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "base",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
+      "node_values": {
+        "Width": 14.0,
+        "Height": 4.0,
+        "Depth": 7.0,
+        "Offset": [13.54, 0.0, 0.0],
+        "Rotate": [0.0, 0.0, 90.0],
+        "Center": -0.68
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "Transform",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>Transform",
+      "node_values": {
+        "Offset": [0.0, 0.0, 3.5]
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "shaft",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
+      "node_values": {
+        "Circle sides": 64,
+        "Radius": 1.5,
+        "Depth": 2.5,
+        "Offset": [0.0, 0.0, 1.5]
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "spacer",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
+      "node_values": {
+        "Circle sides": 64,
+        "Radius": 4.0,
+        "Depth": 1.0,
+        "Offset": [0.0, 0.0, 3.38]
+      }
+    }
+  ],
+  "vertices": [],
+  "edges": [],
+  "polygons": []
+}

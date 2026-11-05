@@ -11,7 +11,7 @@
       "array_index": 0,
       "variables": {
         "shaft_radius": {
-          "object": "<_bpy_types.Object>wheel core",
+          "object": "<_bpy_types.Object>2 wheel core",
           "data_path": "modifiers[\"hex shaft\"].properties.inputs.Socket_3.value"
         }
       }
@@ -22,8 +22,8 @@
       "array_index": 2,
       "variables": {
         "wheel_depth": {
-          "object": "<_bpy_types.Object>wheel",
-          "data_path": "modifiers[\"CSG_star\"].properties.inputs.Socket_5.value"
+          "object": "<_bpy_types.Object>1 wheel",
+          "data_path": "modifiers[\"star\"].properties.inputs.Socket_5.value"
         }
       }
     }
@@ -37,7 +37,7 @@
       "node_values": {
         "Circle sides": 64,
         "Radius": 4.5,
-        "Depth": 2.25,
+        "Depth": 4.0,
         "Center": -1.0
       }
     },
@@ -71,6 +71,7 @@
     {
       "type": "NODES",
       "name": "Transform",
+      "show_in_editmode": false,
       "node_group": "<bpy.types.GeometryNodeTree>Transform",
       "node_values": {
         "Offset": [0.0, 0.0, 3.375]

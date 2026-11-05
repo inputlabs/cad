@@ -7,7 +7,7 @@
   "modifiers": [
     {
       "type": "NODES",
-      "name": "CSG_star",
+      "name": "star",
       "show_in_editmode": false,
       "node_group": "<bpy.types.GeometryNodeTree>CSG_star",
       "node_values": {
@@ -30,13 +30,13 @@
     {
       "type": "BOOLEAN",
       "name": "core cav",
-      "object": "<_bpy_types.Object>wheel core cav",
+      "object": "<_bpy_types.Object>3 wheel core cav",
       "solver": "MANIFOLD"
     },
     {
       "type": "BOOLEAN",
-      "name": "core holes",
-      "object": "<_bpy_types.Object>wheel core holes",
+      "name": "core float",
+      "object": "<_bpy_types.Object>4 wheel core float",
       "solver": "MANIFOLD"
     }
   ],

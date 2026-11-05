@@ -11,8 +11,8 @@
       "array_index": 2,
       "variables": {
         "wheel_depth": {
-          "object": "<_bpy_types.Object>wheel",
-          "data_path": "modifiers[\"CSG_star\"].properties.inputs.Socket_5.value"
+          "object": "<_bpy_types.Object>1 wheel",
+          "data_path": "modifiers[\"star\"].properties.inputs.Socket_5.value"
         }
       }
     },
@@ -22,7 +22,7 @@
       "array_index": 0,
       "variables": {
         "shaft_radius": {
-          "object": "<_bpy_types.Object>wheel core",
+          "object": "<_bpy_types.Object>2 wheel core",
           "data_path": "modifiers[\"hex shaft\"].properties.inputs.Socket_3.value"
         }
       }
@@ -32,7 +32,7 @@
       "data_path": "modifiers[\"main slot\"].properties.inputs.Socket_4.value",
       "variables": {
         "value": {
-          "object": "<_bpy_types.Object>wheel core",
+          "object": "<_bpy_types.Object>2 wheel core",
           "data_path": "modifiers[\"core\"].properties.inputs.Socket_4.value"
         }
       }
@@ -42,18 +42,18 @@
       "data_path": "modifiers[\"diamond\"].properties.inputs.Socket_4.value",
       "variables": {
         "value": {
-          "object": "<_bpy_types.Object>wheel core",
+          "object": "<_bpy_types.Object>2 wheel core",
           "data_path": "modifiers[\"core\"].properties.inputs.Socket_4.value"
         }
       }
     },
     {
-      "expression": "core_diameter + 2 - 0.07",
-      "data_path": "modifiers[\"Array\"].properties.inputs.Socket_6.value",
+      "expression": "value",
+      "data_path": "modifiers[\"stopper\"].properties.inputs.Socket_3.value",
       "variables": {
-        "core_diameter": {
-          "object": "<_bpy_types.Object>wheel core",
-          "data_path": "modifiers[\"core\"].properties.inputs.Socket_3.value"
+        "value": {
+          "object": "<_bpy_types.Object>3 wheel core cav",
+          "data_path": "modifiers[\"stopper\"].properties.inputs.Socket_2.value"
         }
       }
     }
@@ -61,26 +61,22 @@
   "modifiers": [
     {
       "type": "NODES",
-      "name": "stoppers",
+      "name": "stopper",
       "show_in_editmode": false,
-      "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
       "node_values": {
-        "Circle sides": 4,
-        "Radius": 2.0,
-        "Depth": 10.0,
+        "Width": 10.3,
+        "Height": 10.3,
+        "Depth": 20.0,
         "Center": 0.0
       }
     },
     {
-      "type": "NODES",
-      "name": "Array",
+      "type": "SOLIDIFY",
+      "name": "Solidify",
       "show_in_editmode": false,
-      "node_group": "<bpy.types.GeometryNodeTree>Array",
-      "node_values": {
-        "Shape": "Circle",
-        "Count": 4,
-        "Radius": 6.43
-      }
+      "thickness": 0.8,
+      "use_even_offset": true
     },
     {
       "type": "NODES",
@@ -98,8 +94,8 @@
       "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
       "node_values": {
         "Circle sides": 64,
-        "Radius": 6.0,
-        "Depth": 2.25,
+        "Radius": 6.1,
+        "Depth": 4.0,
         "Bool mode": 2
       }
     },
@@ -125,7 +121,7 @@
       "node_values": {
         "Width": 6.0,
         "Height": 6.0,
-        "Depth": 2.25,
+        "Depth": 4.0,
         "Rotate": [0.0, 0.0, 45.0]
       }
     },
@@ -136,6 +132,18 @@
       "node_group": "<bpy.types.GeometryNodeTree>Transform",
       "node_values": {
         "Offset": [0.0, 0.0, -3.375]
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "center hole",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
+      "node_values": {
+        "Circle sides": 128,
+        "Radius": 1.65,
+        "Depth": 10.0,
+        "Center": 0.0
       }
     }
   ],
