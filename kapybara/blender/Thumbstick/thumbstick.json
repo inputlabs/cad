@@ -1,13 +1,24 @@
 {
   "type": "MESH",
-  "location": [-9.0, 20.052, 10.543],
+  "location": [-9.0, 20.03, 9.85],
   "rotation": [-24.0, 0.0, -0.0],
   "scale": [1.0, 1.0, 1.0],
-  "hide_viewport": false,
+  "hide_viewport": true,
   "modifiers": [
+    {
+      "type": "NODES",
+      "name": "Test rotation",
+      "show_render": false,
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>Transform",
+      "node_values": {
+        "Rotation": [0.0, -23.0, 0.0]
+      }
+    },
     {
       "type": "MIRROR",
       "name": "Mirror",
+      "show_in_editmode": false,
       "mirror_object": "<_bpy_types.Object>Body"
     }
   ],

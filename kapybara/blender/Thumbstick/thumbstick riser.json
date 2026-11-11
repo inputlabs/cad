@@ -1,0 +1,135 @@
+{
+  "type": "MESH",
+  "location": [0.0, 19.0, 0.0],
+  "rotation": [0.0, 0.0, 0.0],
+  "scale": [1.0, 1.0, 1.0],
+  "hide_viewport": false,
+  "modifiers": [
+    {
+      "type": "SOLIDIFY",
+      "name": "Solidify",
+      "show_in_editmode": false,
+      "thickness": 10.0
+    },
+    {
+      "type": "NODES",
+      "name": "cut top",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
+      "node_values": {
+        "Width": 50.0,
+        "Height": 50.0,
+        "Depth": 50.0,
+        "Offset": [0.0, 0.0, 5.4],
+        "Rotate": [-23.0, 0.0, 0.0],
+        "Bool mode": 1
+      }
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "cut cable",
+      "object": "<_bpy_types.Object>thumbstick riser cav",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "NODES",
+      "name": "peg A base",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
+      "node_values": {
+        "Circle sides": 32,
+        "Radius": 1.28,
+        "Depth": 0.8,
+        "Offset": [-9.0, -8.499999, 8.999999],
+        "Rotate": [-23.0, 0.0, 0.0]
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "peg A pin",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
+      "node_values": {
+        "Circle sides": 32,
+        "Radius": 0.75,
+        "Depth": 2.5,
+        "Offset": [-9.0, -8.499999, 8.999999],
+        "Rotate": [-23.0, 0.0, 0.0]
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "peg B base",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
+      "node_values": {
+        "Circle sides": 32,
+        "Radius": 1.28,
+        "Depth": 0.8,
+        "Offset": [-9.0, 8.410001, 1.779999],
+        "Rotate": [-23.0, 0.0, 0.0]
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "peg B pin",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
+      "node_values": {
+        "Circle sides": 32,
+        "Radius": 0.75,
+        "Depth": 2.5,
+        "Offset": [-9.0, 8.410001, 1.779999],
+        "Rotate": [-23.0, 0.0, 0.0]
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "Mirror_manifold",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>Mirror_manifold",
+      "node_values": {
+        "X": true
+      }
+    }
+  ],
+  "vertices": [
+    [-16.0, -5.8, 0.0],
+    [-7.0, -9.9, 0.0],
+    [-16.0, 4.0, -0.0],
+    [-7.0, 11.7, -0.0],
+    [-11.0, -9.9, 0.0],
+    [-4.5, -7.7, 0.0],
+    [-11.0, 11.7, -0.0],
+    [-14.8, 8.8, -0.0],
+    [-7.0, 5.0, -0.0],
+    [-2.2, -7.7, 0.0],
+    [-2.2, 5.0, -0.0],
+    [-2.2, -3.5, -0.0],
+    [0.0, -7.7, 0.0],
+    [0.0, -3.5, -0.0]
+  ],
+  "edges": [
+    [4, 1],
+    [8, 3],
+    [7, 2],
+    [2, 0],
+    [0, 4],
+    [1, 5],
+    [3, 6],
+    [6, 7],
+    [5, 8],
+    [11, 10],
+    [8, 10],
+    [9, 5],
+    [9, 11],
+    [12, 13],
+    [12, 9],
+    [11, 13]
+  ],
+  "polygons": [
+    [0, 2, 7, 6, 3, 8, 5, 1, 4],
+    [5, 8, 10, 11, 9],
+    [9, 11, 13, 12]
+  ]
+}
