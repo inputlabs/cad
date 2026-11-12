@@ -1,0 +1,175 @@
+{
+  "type": "MESH",
+  "location": [0.0, 19.0, 0.0],
+  "rotation": [0.0, 0.0, 0.0],
+  "scale": [1.0, 1.0, 1.0],
+  "hide_viewport": false,
+  "drivers": [],
+  "modifiers": [
+    {
+      "type": "NODES",
+      "name": "stoppers",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
+      "node_values": {
+        "Width": 2.5,
+        "Height": 3.0,
+        "Depth": 4.38,
+        "Offset": [5.5, -5.56, 0.0],
+        "Center": -1.0
+      }
+    },
+    {
+      "type": "MIRROR",
+      "name": "Mirror X stopper",
+      "show_in_editmode": false
+    },
+    {
+      "type": "MIRROR",
+      "name": "Mirror Y stopper.001",
+      "show_in_editmode": false,
+      "use_axis": [
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "type": "NODES",
+      "name": "Transform stopperws",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>Transform",
+      "node_values": {
+        "Offset": [0.0, 1.8, 0.0]
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "slab",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
+      "node_values": {
+        "Width": 13.5,
+        "Height": 14.125,
+        "Depth": 1.0,
+        "Offset": [0.0, 1.8, 0.0],
+        "Center": -1.0
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "slab hole",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
+      "node_values": {
+        "Circle sides": 64,
+        "Radius": 5.5,
+        "Depth": 10.0,
+        "Offset": [0.0, 1.83, 0.0],
+        "Center": 0.0,
+        "Bool mode": 1
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "peg top block",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
+      "node_values": {
+        "Width": 3.0,
+        "Height": 3.0,
+        "Depth": 6.2,
+        "Offset": [0.0, -6.76, 0.0],
+        "Center": -1.0
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "peg top",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
+      "node_values": {
+        "Circle sides": 32,
+        "Radius": 0.77,
+        "Depth": 8.6,
+        "Offset": [0.0, -6.62, 0.0],
+        "Center": -1.0
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "joiner",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
+      "node_values": {
+        "Width": 4.03,
+        "Height": 3.0,
+        "Depth": 3.3,
+        "Offset": [7.02, -3.76, 0.0],
+        "Center": -1.0
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "Offset",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>Transform",
+      "node_values": {
+        "Offset": [-9.0, -4.72, 12.8]
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "Rotate",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>Transform",
+      "node_values": {
+        "Rotation": [-23.0, 0.0, 0.0]
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "Mirror_manifold",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>Mirror_manifold",
+      "node_values": {
+        "X": true
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "joiner center",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
+      "node_values": {
+        "Width": 4.12,
+        "Height": 4.15,
+        "Depth": 6.5,
+        "Offset": [0.0, -5.6, 13.0],
+        "Center": -1.0
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "bolt cav",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
+      "node_values": {
+        "Circle sides": 32,
+        "Radius": 2.5,
+        "Depth": 5.0,
+        "Offset": [0.0, -5.4, 12.999999],
+        "Bool mode": 1
+      }
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "bolt hole",
+      "object": "<_bpy_types.Object>thumbstick riser bolt hole",
+      "solver": "MANIFOLD"
+    }
+  ],
+  "vertices": [],
+  "edges": [],
+  "polygons": []
+}

@@ -31,13 +31,13 @@
     {
       "type": "BOOLEAN",
       "name": "stick cav",
-      "object": "<_bpy_types.Object>thumbstick cav",
+      "object": "<_bpy_types.Object>thumbstick case cav",
       "solver": "MANIFOLD"
     },
     {
       "type": "BOOLEAN",
       "name": "stick hole",
-      "object": "<_bpy_types.Object>thumbstick hole",
+      "object": "<_bpy_types.Object>thumbstick case hole",
       "solver": "MANIFOLD"
     },
     {

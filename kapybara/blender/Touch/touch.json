@@ -3,7 +3,7 @@
   "location": [-19.927, 13.613, -5.421],
   "rotation": [0.0, 0.0, 0.0],
   "scale": [1.0, 1.0, 1.0],
-  "hide_viewport": false,
+  "hide_viewport": true,
   "modifiers": [
     {
       "type": "BOOLEAN",
@@ -22,6 +22,7 @@
     {
       "type": "BOOLEAN",
       "name": "bumper cav",
+      "show_viewport": false,
       "object": "<_bpy_types.Object>bumper cav",
       "solver": "MANIFOLD"
     }
