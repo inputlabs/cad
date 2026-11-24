@@ -8,6 +8,7 @@
     {
       "type": "NODES",
       "name": "cut",
+      "show_in_editmode": false,
       "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
       "node_values": {
         "Width": 100.0,
@@ -31,7 +32,19 @@
     {
       "type": "BOOLEAN",
       "name": "stick cav",
-      "object": "<_bpy_types.Object>thumbstick case cav",
+      "object": "<_bpy_types.Object>thumbstick case cav 1",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "stick cav 2",
+      "object": "<_bpy_types.Object>thumbstick case cav 2",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "stick cav 3",
+      "object": "<_bpy_types.Object>thumbstick case cav 3",
       "solver": "MANIFOLD"
     },
     {
@@ -75,12 +88,6 @@
       "type": "BOOLEAN",
       "name": "led",
       "object": "<_bpy_types.Object>LED holes",
-      "solver": "MANIFOLD"
-    },
-    {
-      "type": "BOOLEAN",
-      "name": "led cav",
-      "object": "<_bpy_types.Object>LED cav",
       "solver": "MANIFOLD"
     },
     {

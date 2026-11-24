@@ -62,27 +62,6 @@
       }
     },
     {
-      "type": "NODES",
-      "name": "Mirror_manifold",
-      "show_in_editmode": false,
-      "node_group": "<bpy.types.GeometryNodeTree>Mirror_manifold",
-      "node_values": {
-        "X": true
-      }
-    },
-    {
-      "type": "NODES",
-      "name": "cut central",
-      "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
-      "node_values": {
-        "Width": 4.4,
-        "Height": 5.0,
-        "Depth": 10.0,
-        "Offset": [0.0, -6.0, 6.5],
-        "Bool mode": 1
-      }
-    },
-    {
       "type": "BOOLEAN",
       "name": "bolt hole",
       "object": "<_bpy_types.Object>thumbstick riser bolt hole",
@@ -90,51 +69,44 @@
     },
     {
       "type": "BOOLEAN",
-      "name": "Boolean",
+      "name": "nut cav",
       "object": "<_bpy_types.Object>thumbstick riser nut cav"
+    },
+    {
+      "type": "NODES",
+      "name": "Mirror_manifold",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>Mirror_manifold",
+      "node_values": {
+        "X": true
+      }
     }
   ],
   "vertices": [
-    [-16.0, -5.8, 0.0],
+    [-16.0, -9.9, 0.0],
     [-7.0, -9.9, 0.0],
-    [-16.0, 4.0, -0.0],
+    [-16.0, 7.0, 0.0],
     [-11.0, -9.9, 0.0],
-    [-11.0, 11.7, -0.0],
-    [-16.0, 8.4, -0.0],
-    [-2.2, -7.7, 0.0],
-    [-2.2, 5.0, -0.0],
+    [-2.2, -9.9, 0.0],
+    [-2.2, 7.0, 0.0],
     [-2.2, -3.5, -0.0],
-    [0.0, -7.7, 0.0],
-    [0.0, -3.5, -0.0],
-    [-2.2, 11.7, 0.0],
-    [0.0, 5.0, -0.0],
-    [0.0, 11.7, 0.0]
+    [0.0, -9.9, 0.0],
+    [0.0, -3.5, -0.0]
   ],
   "edges": [
     [3, 1],
-    [5, 2],
     [2, 0],
     [0, 3],
-    [4, 5],
-    [8, 7],
-    [6, 1],
+    [6, 5],
+    [4, 1],
+    [4, 6],
+    [7, 8],
+    [7, 4],
     [6, 8],
-    [9, 10],
-    [9, 6],
-    [8, 10],
-    [11, 7],
-    [4, 11],
-    [13, 12],
-    [12, 7],
-    [11, 13],
-    [6, 0],
-    [7, 2]
+    [5, 2]
   ],
   "polygons": [
-    [0, 6, 1, 3],
-    [6, 8, 10, 9],
-    [7, 11, 13, 12],
-    [7, 8, 6, 0, 2],
-    [11, 7, 2, 5, 4]
+    [3, 0, 2, 5, 6, 4, 1],
+    [4, 6, 8, 7]
   ]
 }

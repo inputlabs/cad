@@ -4,45 +4,40 @@
   "rotation": [0.0, 0.0, 0.0],
   "scale": [1.0, 1.0, 1.0],
   "hide_viewport": false,
-  "drivers": [],
+  "drivers": [
+    {
+      "expression": "value",
+      "data_path": "modifiers[\"slab cut H2\"].properties.inputs.Socket_3.value",
+      "variables": {
+        "value": {
+          "object": "<_bpy_types.Object>3 thumbstick riser bracket",
+          "data_path": "modifiers[\"slab cut H\"].properties.inputs.Socket_3.value"
+        }
+      }
+    },
+    {
+      "expression": "value",
+      "data_path": "modifiers[\"slab cut V2\"].properties.inputs.Socket_2.value",
+      "variables": {
+        "value": {
+          "object": "<_bpy_types.Object>3 thumbstick riser bracket",
+          "data_path": "modifiers[\"slab cut V\"].properties.inputs.Socket_2.value"
+        }
+      }
+    },
+    {
+      "expression": "value",
+      "data_path": "modifiers[\"slab cut V\"].properties.inputs.Socket_5.value",
+      "array_index": 2,
+      "variables": {
+        "value": {
+          "object": "<_bpy_types.Object>3 thumbstick riser bracket",
+          "data_path": "modifiers[\"slab cut H\"].properties.inputs.Socket_5.value[2]"
+        }
+      }
+    }
+  ],
   "modifiers": [
-    {
-      "type": "NODES",
-      "name": "stoppers",
-      "show_in_editmode": false,
-      "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
-      "node_values": {
-        "Width": 2.5,
-        "Height": 3.0,
-        "Depth": 4.38,
-        "Offset": [5.5, -5.56, 0.0],
-        "Center": -1.0
-      }
-    },
-    {
-      "type": "MIRROR",
-      "name": "Mirror X stopper",
-      "show_in_editmode": false
-    },
-    {
-      "type": "MIRROR",
-      "name": "Mirror Y stopper.001",
-      "show_in_editmode": false,
-      "use_axis": [
-        false,
-        true,
-        false
-      ]
-    },
-    {
-      "type": "NODES",
-      "name": "Transform stopperws",
-      "show_in_editmode": false,
-      "node_group": "<bpy.types.GeometryNodeTree>Transform",
-      "node_values": {
-        "Offset": [0.0, 1.8, 0.0]
-      }
-    },
     {
       "type": "NODES",
       "name": "slab",
@@ -51,9 +46,65 @@
       "node_values": {
         "Width": 13.5,
         "Height": 14.125,
-        "Depth": 1.0,
+        "Depth": 4.38,
         "Offset": [0.0, 1.8, 0.0],
         "Center": -1.0
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "slab cut H",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
+      "node_values": {
+        "Width": 14.0,
+        "Height": 8.0,
+        "Depth": 5.0,
+        "Offset": [0.0, 1.8, -1.7],
+        "Center": -1.0,
+        "Bool mode": 1
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "slab cut H2",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
+      "node_values": {
+        "Width": 12.05,
+        "Height": 8.0,
+        "Depth": 5.0,
+        "Offset": [0.0, 1.8, -1.0],
+        "Center": -1.0,
+        "Bool mode": 1
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "slab cut V",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
+      "node_values": {
+        "Width": 7.900001,
+        "Height": 15.0,
+        "Depth": 5.0,
+        "Offset": [0.0, 1.8, -1.7],
+        "Center": -1.0,
+        "Bool mode": 1
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "slab cut V2",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
+      "node_values": {
+        "Width": 7.900001,
+        "Height": 12.8,
+        "Depth": 5.0,
+        "Offset": [0.0, 1.8, -1.0],
+        "Center": -1.0,
+        "Bool mode": 1
       }
     },
     {
@@ -72,15 +123,17 @@
     },
     {
       "type": "NODES",
-      "name": "peg top block",
+      "name": "slab corner",
       "show_in_editmode": false,
       "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
       "node_values": {
-        "Width": 3.0,
-        "Height": 3.0,
-        "Depth": 6.2,
-        "Offset": [0.0, -6.76, 0.0],
-        "Center": -1.0
+        "Width": 5.0,
+        "Height": 5.0,
+        "Depth": 10.0,
+        "Offset": [-6.799999, 10.0, 0.0],
+        "Rotate": [0.0, 0.0, 45.0],
+        "Center": -1.0,
+        "Bool mode": 1
       }
     },
     {
@@ -102,11 +155,24 @@
       "show_in_editmode": false,
       "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
       "node_values": {
-        "Width": 4.03,
-        "Height": 3.0,
-        "Depth": 3.3,
-        "Offset": [7.02, -3.76, 0.0],
+        "Width": 16.0,
+        "Height": 4.0,
+        "Depth": 6.0,
+        "Offset": [1.25, -6.75, 0.0],
         "Center": -1.0
+      }
+    },
+    {
+      "type": "NODES",
+      "name": "slide cav ",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
+      "node_values": {
+        "Width": 7.5,
+        "Height": 1.0,
+        "Depth": 2.0,
+        "Offset": [0.0, -4.7, -6.14],
+        "Bool mode": 1
       }
     },
     {
@@ -129,6 +195,25 @@
     },
     {
       "type": "NODES",
+      "name": "bolt head",
+      "show_in_editmode": false,
+      "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
+      "node_values": {
+        "Circle sides": 32,
+        "Radius": 2.5,
+        "Depth": 5.0,
+        "Offset": [-12.5, -7.8, 14.0],
+        "Bool mode": 1
+      }
+    },
+    {
+      "type": "BOOLEAN",
+      "name": "bolt hole",
+      "object": "<_bpy_types.Object>thumbstick riser bolt hole",
+      "solver": "MANIFOLD"
+    },
+    {
+      "type": "NODES",
       "name": "Mirror_manifold",
       "show_in_editmode": false,
       "node_group": "<bpy.types.GeometryNodeTree>Mirror_manifold",
@@ -138,35 +223,17 @@
     },
     {
       "type": "NODES",
-      "name": "joiner center",
+      "name": "joiner cut",
       "show_in_editmode": false,
       "node_group": "<bpy.types.GeometryNodeTree>CSG_cuboid",
       "node_values": {
-        "Width": 4.12,
-        "Height": 4.15,
-        "Depth": 6.5,
-        "Offset": [0.0, -5.6, 13.0],
-        "Center": -1.0
-      }
-    },
-    {
-      "type": "NODES",
-      "name": "bolt cav",
-      "show_in_editmode": false,
-      "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
-      "node_values": {
-        "Circle sides": 32,
-        "Radius": 2.5,
-        "Depth": 5.0,
-        "Offset": [0.0, -5.4, 12.999999],
+        "Width": 4.5,
+        "Height": 5.0,
+        "Depth": 10.0,
+        "Offset": [0.0, -0.5, 10.6],
+        "Rotate": [31.4, 0.0, 0.0],
         "Bool mode": 1
       }
-    },
-    {
-      "type": "BOOLEAN",
-      "name": "bolt hole",
-      "object": "<_bpy_types.Object>thumbstick riser bolt hole",
-      "solver": "MANIFOLD"
     }
   ],
   "vertices": [],
