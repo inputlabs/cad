@@ -18,8 +18,8 @@
       "show_in_editmode": false,
       "node_group": "<bpy.types.GeometryNodeTree>Tolerance",
       "node_values": {
-        "X": -0.15,
-        "Y": -0.15
+        "X": -0.2,
+        "Y": -0.2
       }
     },
     {

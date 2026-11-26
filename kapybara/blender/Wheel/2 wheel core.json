@@ -1,6 +1,6 @@
 {
   "type": "MESH",
-  "location": [0.0, -1.564, 15.554],
+  "location": [0.0, -1.564, 16.0],
   "rotation": [0.0, -90.0, 0.0],
   "scale": [1.0, 1.0, 1.0],
   "hide_viewport": false,
