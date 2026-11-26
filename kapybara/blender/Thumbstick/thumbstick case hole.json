@@ -12,7 +12,7 @@
       "node_group": "<bpy.types.GeometryNodeTree>CSG_cylinder",
       "node_values": {
         "Circle sides": 64,
-        "Radius": 5.0,
+        "Radius": 5.325,
         "Depth": 10.0,
         "Center": 0.0
       }

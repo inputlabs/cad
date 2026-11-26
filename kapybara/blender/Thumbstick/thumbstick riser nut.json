@@ -3,7 +3,7 @@
   "location": [-12.5, 11.2, 3.5],
   "rotation": [0.0, 0.0, 30.0],
   "scale": [1.0, 1.0, 1.0],
-  "hide_viewport": false,
+  "hide_viewport": true,
   "modifiers": [
     {
       "type": "NODES",

@@ -99,7 +99,8 @@
     {
       "type": "BOOLEAN",
       "name": "encoder solder",
-      "object": "<_bpy_types.Object>encoder solder cav"
+      "object": "<_bpy_types.Object>encoder solder cav",
+      "solver": "MANIFOLD"
     }
   ],
   "vertices": [],

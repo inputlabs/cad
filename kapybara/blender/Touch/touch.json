@@ -3,7 +3,7 @@
   "location": [-19.927, 13.613, -5.421],
   "rotation": [0.0, 0.0, 0.0],
   "scale": [1.0, 1.0, 1.0],
-  "hide_viewport": true,
+  "hide_viewport": false,
   "modifiers": [
     {
       "type": "BOOLEAN",
